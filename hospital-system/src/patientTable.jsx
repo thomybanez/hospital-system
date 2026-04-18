@@ -123,6 +123,29 @@ export default function PatientTable({ records, status, loading, onRecordsChange
   return (
     <div>
 
+      {/* Add Patient button */}
+      <button
+        onClick={onAddPatient}
+        style={{
+        marginLeft: "auto",
+        display: "flex",
+        alignItems: "center",
+        gap: 8,
+        width: "15%",
+        padding: 14,
+        background: "#1a1a2e",
+        color: "#fff",
+        border: "none",
+        borderRadius: 10,
+        fontSize: 15,
+        fontWeight: 700,
+        cursor: "pointer",
+        marginTop: 14,
+      }}
+      >
+        ＋ Add Patient
+      </button>
+
       {/* Status bar */}
       <div style={{ marginBottom:12, minHeight:24 }}>
         {loading  && <span style={{ color:"#7a8499" }}>Loading…</span>}
@@ -274,20 +297,7 @@ export default function PatientTable({ records, status, loading, onRecordsChange
         );
       })}
 
-      {/* Add Patient button */}
-      <button
-        onClick={onAddPatient}
-        style={{
-          display:"flex", alignItems:"center", justifyContent:"center",
-          gap:8, width:"100%", padding:14,
-          background:"#1a1a2e", color:"#fff",
-          border:"none", borderRadius:10,
-          fontSize:15, fontWeight:700, cursor:"pointer",
-          marginTop:14,
-        }}
-      >
-        ＋ Add Patient
-      </button>
+      
     </div>
   );
 }
