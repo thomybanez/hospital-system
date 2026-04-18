@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";  // add useEffect
+import { useState, useEffect } from "react";
 import PatientTable from "./PatientTable";
 import AddPatientForm from "./AddPatientForm";
 
@@ -32,6 +32,11 @@ export default function App() {
   // Auto-load on mount
   useEffect(() => { loadRecords(); }, []);
 
+  function goToList() {
+    setView("list");
+    loadRecords(); // refresh after returning from add form
+  }
+
   return (
     <div style={{ padding: 16, maxWidth: 900, margin: "0 auto" }}>
       {view === "list" ? (
@@ -42,13 +47,12 @@ export default function App() {
             headers={headers}
             status={status}
             loading={loading}
-            onLoad={loadRecords}
             onRecordsChange={setRecords}
             onAddPatient={() => setView("add")}
           />
         </>
       ) : (
-        <AddPatientForm onBack={() => setView("list")} />
+        <AddPatientForm onBack={goToList} />
       )}
     </div>
   );

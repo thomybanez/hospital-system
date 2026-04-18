@@ -15,15 +15,15 @@ const LABELS = {
   allergies:"Allergies", safety:"Safety", sex:"Sex", address:"Address"
 };
 
-const FULL_WIDTH = new Set(["diagnosis","address","transin","admitted","allergies"]);
+const FULL_WIDTH  = new Set(["diagnosis","address","transin","admitted","allergies"]);
 const HEADER_TAGS = ["rank","bos","afpsn"];
 
 async function apiPost(action, payload) {
   const res = await fetch(API_URL, {
-    method: "POST",
+    method:  "POST",
     redirect: "follow",
     headers: { "Content-Type": "text/plain" },
-    body: JSON.stringify({ action, ...payload }),
+    body:    JSON.stringify({ action, ...payload }),
   });
   return res.json();
 }
@@ -34,13 +34,13 @@ const s = {
     boxShadow:"0 2px 8px rgba(0,0,0,0.07)", marginBottom:10, overflow:"hidden"
   },
   cardExpanded: { borderColor:"#c5d9f0", boxShadow:"0 4px 16px rgba(74,144,217,0.13)" },
-  cardHeader: { display:"flex", alignItems:"center", padding:"12px 14px", gap:10 },
+  cardHeader:   { display:"flex", alignItems:"center", padding:"12px 14px", gap:10 },
   tag: {
     background:"#eef3fb", color:"#3578c0", borderRadius:4, padding:"2px 6px",
     fontSize:11, fontWeight:600, fontFamily:"monospace", whiteSpace:"nowrap"
   },
   btn: (color) => ({
-    background: color, color:"#fff", border:"none", borderRadius:7,
+    background:color, color:"#fff", border:"none", borderRadius:7,
     padding:"7px 11px", fontSize:14, cursor:"pointer"
   }),
   detailGrid: { display:"grid", gridTemplateColumns:"1fr 1fr", gap:10, marginBottom:14 },
@@ -54,14 +54,14 @@ const s = {
   },
 };
 
-export default function PatientTable({ records, status, loading, onLoad, onRecordsChange, onAddPatient }) {
-  const [search, setSearch]        = useState("");
-  const [sortField, setSortField]  = useState(0);
-  const [sortDir, setSortDir]      = useState(1);
-  const [expandedIdx, setExpanded] = useState(null);
-  const [editIdx, setEditIdx]      = useState(null);
-  const [draft, setDraft]          = useState({});
-  const [opStatus, setOpStatus]    = useState("");
+export default function PatientTable({ records, status, loading, onRecordsChange, onAddPatient }) {
+  const [search,     setSearch]    = useState("");
+  const [sortField,  setSortField] = useState(0);
+  const [sortDir,    setSortDir]   = useState(1);
+  const [expandedIdx,setExpanded]  = useState(null);
+  const [editIdx,    setEditIdx]   = useState(null);
+  const [draft,      setDraft]     = useState({});
+  const [opStatus,   setOpStatus]  = useState("");
 
   const filtered = useMemo(() => {
     let rows = [...records];
@@ -90,12 +90,8 @@ export default function PatientTable({ records, status, loading, onLoad, onRecor
     else { setExpanded(i); cancelEdit(); }
   }
 
-  function startEdit(row) {
-    setDraft(rowToObj(row));
-    setEditIdx(row[0]);
-  }
-
-  function cancelEdit() { setEditIdx(null); setDraft({}); }
+  function startEdit(row)  { setDraft(rowToObj(row)); setEditIdx(row[0]); }
+  function cancelEdit()    { setEditIdx(null); setDraft({}); }
 
   async function saveEdit(row) {
     setOpStatus("Saving...");
@@ -126,21 +122,19 @@ export default function PatientTable({ records, status, loading, onLoad, onRecor
 
   return (
     <div>
-      {/* Top bar */}
-      <div style={{ display:"flex", gap:8, marginBottom:12, flexWrap:"wrap" }}>
-        <button onClick={onLoad} disabled={loading}
-          style={{ ...s.btn("#1a1a2e"), opacity: loading ? 0.6 : 1, padding:"9px 16px" }}>
-          {loading ? "Loading…" : "⟳ Load Records"}
-        </button>
-        {status   && <span style={{ color:"#e74c3c", alignSelf:"center" }}>{status}</span>}
+
+      {/* Status bar */}
+      <div style={{ marginBottom:12, minHeight:24 }}>
+        {loading  && <span style={{ color:"#7a8499" }}>Loading…</span>}
+        {!loading && status   && <span style={{ color:"#e74c3c" }}>{status}</span>}
         {opStatus && (
-          <span style={{ color: opStatus.startsWith("✅") ? "#27ae60" : "#e74c3c", alignSelf:"center" }}>
+          <span style={{ color: opStatus.startsWith("✅") ? "#27ae60" : "#e74c3c" }}>
             {opStatus}
           </span>
         )}
       </div>
 
-      {/* Search + sort */}
+      {/* Search + sort — only show once records are loaded */}
       {records.length > 0 && (
         <div style={{ display:"flex", gap:8, marginBottom:12, flexWrap:"wrap" }}>
           <input
@@ -174,10 +168,10 @@ export default function PatientTable({ records, status, loading, onLoad, onRecor
       )}
 
       {/* Empty state */}
-      {records.length === 0 && !loading && (
+      {!loading && records.length === 0 && (
         <div style={{ textAlign:"center", padding:"40px 20px", color:"#7a8499" }}>
           <div style={{ fontSize:36, marginBottom:8 }}>📋</div>
-          Press "Load Records" to fetch patients.
+          No records found.
         </div>
       )}
 
@@ -206,9 +200,13 @@ export default function PatientTable({ records, status, loading, onLoad, onRecor
                 </div>
               </div>
               <div style={{ display:"flex", gap:6 }}>
-                <button onClick={() => toggleExpand(i)}
-                  style={{ ...s.btn(isOpen ? "#3578c0" : "#4a90d9"),
-                    transform: isOpen ? "rotate(180deg)" : "none", transition:"transform 0.2s" }}>
+                <button
+                  onClick={() => toggleExpand(i)}
+                  style={{
+                    ...s.btn(isOpen ? "#3578c0" : "#4a90d9"),
+                    transform: isOpen ? "rotate(180deg)" : "none",
+                    transition: "transform 0.2s"
+                  }}>
                   ▼
                 </button>
                 <button onClick={() => deleteRow(row, i)} style={s.btn("#e74c3c")}>🗑</button>
@@ -234,8 +232,11 @@ export default function PatientTable({ records, status, loading, onLoad, onRecor
                               <option value="Female">Female</option>
                             </select>
                           ) : (
-                            <input style={s.input} value={draft[f] || ""}
-                              onChange={e => setDraft(d => ({ ...d, [f]: e.target.value }))} />
+                            <input
+                              style={s.input}
+                              value={draft[f] || ""}
+                              onChange={e => setDraft(d => ({ ...d, [f]: e.target.value.toUpperCase() }))}
+                            />
                           )
                         ) : (
                           <div style={{ fontSize:13, fontWeight:500, wordBreak:"break-word" }}>
