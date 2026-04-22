@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import PatientTable from "./PatientTable";
 import AddPatientForm from "./AddPatientForm";
+import FormsHub from "./pages/FormsHub.jsx";
 
 export const API_URL =
   "https://script.google.com/macros/s/AKfycbxRz6y0AKfxFBWK--C8u7Ub9MfslJSG5W8iGEVugrUId7Ljqw5vKWolmL893SlRyhb8/exec";
@@ -10,7 +11,7 @@ export default function App() {
   const [headers, setHeaders] = useState([]);
   const [status, setStatus]   = useState("");
   const [loading, setLoading] = useState(false);
-  const [view, setView]       = useState("list");
+  const [view, setView]       = useState("list"); // "list" | "add" | "forms"
 
   async function loadRecords() {
     setLoading(true);
@@ -29,17 +30,16 @@ export default function App() {
     }
   }
 
-  // Auto-load on mount
   useEffect(() => { loadRecords(); }, []);
 
   function goToList() {
     setView("list");
-    loadRecords(); // refresh after returning from add form
+    loadRecords();
   }
 
   return (
     <div style={{ padding: 16, maxWidth: 900, margin: "0 auto" }}>
-      {view === "list" ? (
+      {view === "list" && (
         <>
           <h1 style={{ marginBottom: 12 }}>🏥 Hospital Records</h1>
           <PatientTable
@@ -49,10 +49,17 @@ export default function App() {
             loading={loading}
             onRecordsChange={setRecords}
             onAddPatient={() => setView("add")}
+            onOpenForms={() => setView("forms")}
           />
         </>
-      ) : (
+      )}
+
+      {view === "add" && (
         <AddPatientForm onBack={goToList} />
+      )}
+
+      {view === "forms" && (
+        <FormsHub onBack={() => setView("list")} />
       )}
     </div>
   );

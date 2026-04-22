@@ -54,14 +54,16 @@ const s = {
   },
 };
 
-export default function PatientTable({ records, status, loading, onRecordsChange, onAddPatient }) {
-  const [search,     setSearch]    = useState("");
-  const [sortField,  setSortField] = useState(0);
-  const [sortDir,    setSortDir]   = useState(1);
-  const [expandedIdx,setExpanded]  = useState(null);
-  const [editIdx,    setEditIdx]   = useState(null);
-  const [draft,      setDraft]     = useState({});
-  const [opStatus,   setOpStatus]  = useState("");
+export default function PatientTable({
+  records, status, loading, onRecordsChange, onAddPatient, onOpenForms
+}) {
+  const [search,      setSearch]    = useState("");
+  const [sortField,   setSortField] = useState(0);
+  const [sortDir,     setSortDir]   = useState(1);
+  const [expandedIdx, setExpanded]  = useState(null);
+  const [editIdx,     setEditIdx]   = useState(null);
+  const [draft,       setDraft]     = useState({});
+  const [opStatus,    setOpStatus]  = useState("");
 
   const filtered = useMemo(() => {
     let rows = [...records];
@@ -123,29 +125,6 @@ export default function PatientTable({ records, status, loading, onRecordsChange
   return (
     <div>
 
-      {/* Add Patient button */}
-      <button
-        onClick={onAddPatient}
-        style={{
-        marginLeft: "auto",
-        display: "flex",
-        alignItems: "center",
-        gap: 8,
-        width: "15%",
-        padding: 14,
-        background: "#1a1a2e",
-        color: "#fff",
-        border: "none",
-        borderRadius: 10,
-        fontSize: 15,
-        fontWeight: 700,
-        cursor: "pointer",
-        marginTop: 14,
-      }}
-      >
-        ＋ Add Patient
-      </button>
-
       {/* Status bar */}
       <div style={{ marginBottom:12, minHeight:24 }}>
         {loading  && <span style={{ color:"#7a8499" }}>Loading…</span>}
@@ -157,7 +136,7 @@ export default function PatientTable({ records, status, loading, onRecordsChange
         )}
       </div>
 
-      {/* Search + sort — only show once records are loaded */}
+      {/* Search + sort */}
       {records.length > 0 && (
         <div style={{ display:"flex", gap:8, marginBottom:12, flexWrap:"wrap" }}>
           <input
@@ -251,14 +230,16 @@ export default function PatientTable({ records, status, loading, onRecordsChange
                             <select style={s.input} value={draft[f] || ""}
                               onChange={e => setDraft(d => ({ ...d, [f]: e.target.value }))}>
                               <option value="">— Select —</option>
-                              <option value="Male">Male</option>
-                              <option value="Female">Female</option>
+                              <option value="MALE">MALE</option>
+                              <option value="FEMALE">FEMALE</option>
                             </select>
                           ) : (
                             <input
                               style={s.input}
                               value={draft[f] || ""}
-                              onChange={e => setDraft(d => ({ ...d, [f]: e.target.value.toUpperCase() }))}
+                              onChange={e => setDraft(d => ({
+                                ...d, [f]: e.target.value.toUpperCase()
+                              }))}
                             />
                           )
                         ) : (
@@ -297,7 +278,29 @@ export default function PatientTable({ records, status, loading, onRecordsChange
         );
       })}
 
-      
+      {/* Bottom action buttons */}
+      <div style={{ display:"flex", gap:10, marginTop:14 }}>
+        <button
+          onClick={onOpenForms}
+          style={{
+            flex:1, padding:14, border:"none", borderRadius:10,
+            background:"#4a90d9", color:"#fff",
+            fontSize:15, fontWeight:700, cursor:"pointer",
+          }}
+        >
+          📋 Forms
+        </button>
+        <button
+          onClick={onAddPatient}
+          style={{
+            flex:1, padding:14, border:"none", borderRadius:10,
+            background:"#1a1a2e", color:"#fff",
+            fontSize:15, fontWeight:700, cursor:"pointer",
+          }}
+        >
+          ＋ Add Patient
+        </button>
+      </div>
     </div>
   );
 }
