@@ -42,6 +42,7 @@ export default function PatientPicker({ onSelect }) {
       safety:    row[16] || "",
       sex:       row[17] || "",
       address:   row[18] || "",
+      civilstatus: row[19] || ""
     };
   }
 

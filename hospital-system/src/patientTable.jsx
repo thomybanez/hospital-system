@@ -4,7 +4,7 @@ import { API_URL } from "./App";
 const FIELDS = [
   "fullname","rank","bos","afpsn","age","regno","dob","religion",
   "height","weight","unit","admitted","transin","diagnosis",
-  "allergies","safety","sex","address"
+  "allergies","safety","sex","address","civilstatus"
 ];
 
 const LABELS = {
@@ -12,7 +12,7 @@ const LABELS = {
   age:"Age", regno:"Reg No", dob:"Date of Birth", religion:"Religion",
   height:"Height (cm)", weight:"Weight (kg)", unit:"Unit",
   admitted:"Admitted", transin:"Trans-In", diagnosis:"Diagnosis",
-  allergies:"Allergies", safety:"Safety", sex:"Sex", address:"Address"
+  allergies:"Allergies", safety:"Safety", sex:"Sex", address:"Address", civilstatus:"Civil Status"
 };
 
 const FULL_WIDTH  = new Set(["diagnosis","address","transin","admitted","allergies"]);
@@ -232,6 +232,17 @@ export default function PatientTable({
                               <option value="">— Select —</option>
                               <option value="MALE">MALE</option>
                               <option value="FEMALE">FEMALE</option>
+                            </select>
+                          ) : f === "civilstatus" ? (
+                            <select
+                              style={s.input}
+                              value={draft[f] || ""}
+                              onChange={e => setDraft(d => ({ ...d, [f]: e.target.value }))}
+                            >
+                              <option value="">— Select —</option>
+                              <option value="SINGLE">SINGLE</option>
+                              <option value="MARRIED">MARRIED</option>
+                              <option value="WIDOW">WIDOW</option>
                             </select>
                           ) : (
                             <input

@@ -20,6 +20,7 @@ export default function PatientForm({ onAdd }) {
     safety: "",
     sex: "",
     address: "",
+    civilstatus: "",
     time: ""
   });
 
@@ -50,6 +51,7 @@ export default function PatientForm({ onAdd }) {
       safety: "",
       sex: "",
       address: "",
+      civilstatus: "",
       time: ""
     });
   };

@@ -6,7 +6,7 @@ const EMPTY = {
   regno:"", dob:"", religion:"", height:"", weight:"",
   unit:"", admitted_date:"", admitted_time:"", transin:"",
   diagnosis:"", surgery:"", surgerydate:"",
-  allergies:"", safety:"", sex:"", address:"",
+  allergies:"", safety:"", sex:"", address:"", civilstatus:""
 };
 
 const s = {
@@ -97,6 +97,7 @@ export default function AddPatientForm({ onBack }) {
         safety:      form.safety,
         sex:         form.sex,
         address:     form.address,
+        civilstatus: form.civilstatus
       },
     };
 
@@ -262,6 +263,16 @@ export default function AddPatientForm({ onBack }) {
         <div style={{ ...s.group, ...s.full }}>
           <label style={s.label}>Address</label>
           <input {...txt("address")} placeholder="ADDRESS" />
+        </div>
+
+        <div style={s.group}>
+          <label style={s.label}>Civil Status</label>
+          <select value={form.civilstatus} onChange={e => set("civilstatus", e.target.value)} style={s.input}>
+            <option value="">— Select —</option>
+            <option value="SINGLE">SINGLE</option>
+            <option value="MARRIED">MARRIED</option>
+            <option value="WIDOW">WIDOW</option>
+          </select>
         </div>
 
       </div>

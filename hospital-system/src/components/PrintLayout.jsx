@@ -12,17 +12,7 @@ export default function PrintLayout({ children, title = "Form" }) {
         marginBottom: 0, flexWrap: "wrap",
       }}>
         <span style={{ fontWeight: 700, fontSize: 14, flex: 1 }}>{title}</span>
-        <label style={{ fontSize: 13, display: "flex", alignItems: "center", gap: 6 }}>
-          <span>Paper:</span>
-          <select
-            value={paper}
-            onChange={e => setPaper(e.target.value)}
-            style={{ padding: "4px 8px", borderRadius: 5, fontSize: 13 }}
-          >
-            <option value="letter">8.5 × 11 (Letter)</option>
-            <option value="legal">8.5 × 13 (Legal)</option>
-          </select>
-        </label>
+       
         <button
           onClick={() => window.print()}
           style={{
@@ -43,6 +33,15 @@ export default function PrintLayout({ children, title = "Form" }) {
           padding: 0;
           box-sizing: border-box; /* This is the most important line */
         }
+
+        .red { border: 2px solid red;}
+        .blue { border: 2px solid blue;}
+        .green { border: 2px solid green;}
+        .yellow {border: 2px solid yellow;}
+        .purple { border: 2px solid purple;}
+        .orange { border: 2px solid orange;}
+        .black { border: 2px solid black;}
+        .pink { border: 2px solid pink; }
 
         @media print {
           .no-print { display: none !important; }
