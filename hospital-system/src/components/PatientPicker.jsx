@@ -20,7 +20,7 @@ export default function PatientPicker({ onSelect }) {
   // row[0]=sheetRow, [1]=fullname, [2]=rank, [3]=bos, [4]=afpsn, [5]=age,
   // [6]=regno, [7]=dob, [8]=religion, [9]=height, [10]=weight,
   // [11]=unit, [12]=admitted, [13]=transin, [14]=diagnosis,
-  // [15]=allergies, [16]=safety, [17]=sex, [18]=address
+  // [15]=allergies, [16]=safety, [17]=sex, [18]=address, [19]=civilstatus
   function buildPatient(row) {
     return {
       rowIndex:  row[0],
