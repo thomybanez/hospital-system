@@ -66,7 +66,7 @@ export default function PrintLayout({ children, title = "Form" }) {
           box-sizing: border-box;
         }
         .form-header { text-align: center;}
-        .form-header .org { font-size: 16px; line-height: 16px; }
+          .form-header .org { font-size: 16px; line-height: 1; }
 
         .form-title { 
           font-size: 16px; 

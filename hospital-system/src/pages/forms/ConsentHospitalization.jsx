@@ -75,7 +75,7 @@ export default function ConsentHospitalization({ onBack }) {
         <div style={{fontSize:'16px', fontFamily:'Calibri', display:'grid', gridTemplateColumns:'3fr 2fr 1fr 1fr 1fr', marginTop:'20px '}}>
             
             <div style={{height:'40px', alignContent:'center', textAlign:'center', justifyItems:'center', padding:'10px'}}>
-              <div style={{ display: "flex", alignItems: "center" }}>
+              <div style={{ display: "flex", alignItems: "center", height:'auto', alignItems:'baseline'}}>
                 <F label="" value={p?.rank} width={30}/>
                 <F label="" value={p?.fullname} width={150} />
               </div>
