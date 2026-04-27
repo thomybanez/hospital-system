@@ -158,15 +158,13 @@ export default function ConsentForm({ title, procedureDefault = "", onBack }) {
           <span style={{marginLeft:'40px'}}>I consent to the administration of anesthesia to be applied by or order the direction of Dr.</span>
           <span style={{textTransform:'uppercase'}}><G value={extra.anesthesiologist} min={100}/></span>
           <span>and to the use of such anesthesia as he may deem advisable,</span>          
-            <div style={{display:'flex', flexDirection:'row'}}>
-              <span style={{flex:'0.90', width:'60%'}}>with the exertion of</span>
-              <div style={{flex:'1.5',display:'flex', flexDirection:'column'}}>
-                <span style={{padding:'0 0px' , textTransform:'uppercase'}}><G value={extra.anesthesiaType} min={100}/></span>
-                <span style={{lineHeight:'0', fontSize:'10px',textAlign:'center'}}>(State name "Spinal" "Anesthesia" etc.)</span>
-              </div>
-              <div style={{flex:'2'}}>
-              </div>
-            </div>
+            <span style={{alignContent:'baseline'}}>
+              <span>with the exertion of</span>
+              <span style={{display:'inline-flex', flexDirection:'column'}}>
+                <span style={{padding:'0 0px' , textTransform:'uppercase', margin:'0 auto',  textAlign:'center', }}><G value={extra.anesthesiaType} min={150}/></span>
+                <span style={{lineHeight:'1', fontSize:'10px',textAlign:'center', textIndent:'0'}}>(State name "Spinal" "Anesthesia" etc.)</span>
+              </span>              
+            </span>
           
           
         </div>
@@ -196,22 +194,22 @@ export default function ConsentForm({ title, procedureDefault = "", onBack }) {
 
       <div style={{display: 'flex', flexDirection:'row-reverse', justifyContent:'space-between', marginTop:'30px'}}>
         <div style={{alignItems:'center',flex:'1', display: "flex", flexDirection:'row-reverse', margin:'0', padding:'0'}}>
-            <G value={p?.fullname} min={100}/>
+            <G value={p?.fullname} min={250}/>
             <div style={{flex:'1', fontSize: '12px'}}>Signature of the Patient</div>
         </div>
         <div style={{flex:'1', display: "flex", flexDirection:'row-reverse', margin:'0', padding:'0', height:'100%'}}>
-            <div className="field-line" style={{flex:'1', marginLeft:'-100px', marginRight:'40px'}}>&nbsp;</div>
+            <div className="field-line" style={{flex:'1'}}>&nbsp;</div>
             <div style={{flex:'1', fontSize: '12px' }}>Signature of patient's <br/> Husband or Wife</div>
         </div>
       </div>
 
       <div style={{display: 'flex', flexDirection:'row-reverse', justifyContent:'space-between', marginTop:'30px'}}>
-        <div style={{alignItems:'center',flex:'1', display: "flex", flexDirection:'row-reverse', margin:'0', padding:'0'}}>
+        <div style={{flex:'1', display: "flex", flexDirection:'row-reverse', margin:'0', padding:'0', height:'100%'}}>
             <div className="field-line" style={{flex:'1'}}>&nbsp;</div>
-            <div style={{flex:'1', fontSize: '12px', textAlign:'left'}}>Signature of person authorized to consent<br/>for the patient</div>
+            <div style={{flex:'1', fontSize: '12px'}}>Signature of person authorized to consent for the patient</div>
         </div>
         <div style={{flex:'1', display: "flex", flexDirection:'row-reverse', margin:'0', padding:'0', height:'100%'}}>
-            <div className="field-line" style={{flex:'1', marginLeft:'-30px', marginRight:'37px'}}>&nbsp;</div>
+            <div className="field-line" style={{flex:'1'}}>&nbsp;</div>
             <div style={{flex:'1', fontSize: '12px'}}>When the patient is a minor or incompetent To give consent; <br/>Relationship to Patient</div>
         </div>
       </div>
