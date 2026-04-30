@@ -32,6 +32,27 @@ const ITEMS = [
   "Culture and sensitivity, specify: _______________",
 ];
 
+const G = ({value, min = 120}) =>{
+    return (
+      <span style={{
+        display:"inline-block",
+        minWidth: min,
+        borderBottom: '1px solid black',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        verticalAlign: 'baseline',
+        whiteSpace: 'normal',
+        lineHeight: '1',
+        padding: '0 0',
+        margin: '0 0',
+        boxSizing: 'border-box',
+        textIndent: '0px'
+      }}>
+        {value || '\u00A0'}
+      </span>
+    )
+  }
+
 export default function PreOpChecklist({ onBack }) {
   const [p, setP] = useState(null);
   const [checks, setChecks] = useState(Array(ITEMS.length).fill(""));
@@ -68,6 +89,7 @@ export default function PreOpChecklist({ onBack }) {
           <div className="org">ARMED FORCES OF THE PHILIPPINES HEALTH SERVICE COMMAND</div>
           <div className="org">VICTORIANO LUNA MEDICAL CENTER</div>
           <div className="org">Camp Col Victoriano K Luna, V. Luna Ave, Quezon City</div>
+          <br></br>
           <div className="form-title">PRE-OPERATIVE CHECKLIST</div>
         </div>
 
