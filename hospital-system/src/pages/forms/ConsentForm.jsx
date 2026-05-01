@@ -114,7 +114,7 @@ export default function ConsentForm({ title, procedureDefault = "", onBack }) {
         <div style={{marginBottom: '20px'}}></div>
         <p style={{marginLeft:'60px',fontSize:'14px' }}>PLACE: VLMC, AFP HEALTH SERVICE COMMAND</p>
 
-        <div style={{ fontSize: '14px', marginLeft: '0px', lineHeight: '1.5' }}>
+        <div style={{ fontSize: '14px', marginLeft: '0px', lineHeight: '1.2' }}>
           <p style={{alignItems:'center', margin: 0, textIndent:'60px'}}>
             <span style={{ marginRight: '50px' }}>
               I.
@@ -143,17 +143,17 @@ export default function ConsentForm({ title, procedureDefault = "", onBack }) {
           </p>
         </div>
 
-        <div style={{fontSize:'16px', lineHeight:'1.5'}}>
+        <div style={{fontSize:'16px', lineHeight:'1.2'}}>
           
         </div>
         
-        <div style={{fontSize:'14px', lineHeight:'1.5', marginTop:'20px'}}>
+        <div style={{fontSize:'14px', lineHeight:'1.2', marginTop:'20px'}}>
           <span style={{marginLeft:'60px'}}>II.</span>
           <span style={{marginLeft:'40px'}}>The nature and purpose of the operation, possible methods of treatment, the risks involved, and the possibilities of complication have been fully explained to me. I acknowledge that no guaranteed or assurance has been made as to the needs that may be obtained.
           </span>
         </div>
 
-        <div style={{fontSize:'14px', marginTop:'10px', lineHeight:'1.5'}}>
+        <div style={{fontSize:'14px', marginTop:'10px', lineHeight:'1.2'}}>
           <span style={{marginLeft:'60px'}}>III.</span>
           <span style={{marginLeft:'40px'}}>I consent to the administration of anesthesia to be applied by or order the direction of Dr.</span>
           <span style={{textTransform:'uppercase'}}><G value={extra.anesthesiologist} min={100}/></span>
@@ -175,11 +175,11 @@ export default function ConsentForm({ title, procedureDefault = "", onBack }) {
           </p>
         )}
 
-        <div style={{fontSize:'14px', marginLeft:'60px', marginTop:'20px',lineHeight:'1.5'}}>
+        <div style={{fontSize:'14px', marginLeft:'60px', marginTop:'20px',lineHeight:'1.2'}}>
           <span>IV.</span>
           <span style={{marginLeft:'40px'}}>For the purpose of advancing medical science and education, I consent to the taking </span>          
         </div>
-        <span style={{fontSize:'14px', marginTop:'20px',lineHeight:'1.5'}}>
+        <span style={{fontSize:'14px', marginTop:'20px',lineHeight:'1.2'}}>
           and publications of any photographs in the course of this operation, including appropriate portions my body provided my identity is not revealed by the pictures or descriptive texts accompanying them.
         </span>
 
