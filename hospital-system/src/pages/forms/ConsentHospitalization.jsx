@@ -59,10 +59,10 @@ export default function ConsentHospitalization({ onBack }) {
         </div>
 
         
-        <div style={{display:'grid', gridTemplateColumns:'3fr 1fr',gap:'10px', marginTop:'40px'}}>
-          <div style={{height:'40px'}}>            
+        <div style={{display:'grid', gridTemplateColumns:'3fr 1fr',gap:'10px', marginTop:'20px'}}>
+          <div style={{height:'20px'}}>            
           </div>
-          <div style={{display:'flex',flexDirection:'column',height:'40px', alignItems:'center', justifyContent:'center'}}>
+          <div style={{display:'flex',flexDirection:'column',height:'20px', alignItems:'center', justifyContent:'center'}}>
             <div style={{fontFamily:'Arial', fontSize:'16px', textAlign:'center', fontWeight:'bold'}}><F label="" value={extra.date || extra.time ? `${extra.date} ${extra.time}` : ""} width={140} /></div>
             <span className="label" style={{fontSize:'16px'}}> Date/Time</span>
           </div>
@@ -74,7 +74,7 @@ export default function ConsentHospitalization({ onBack }) {
         {/* ---------------------FROM NAME RANK TO CIVIL STATUS----------------------- */}
         <div style={{fontSize:'16px', fontFamily:'Calibri', display:'grid', gridTemplateColumns:'3fr 2fr 1fr 1fr 1fr', marginTop:'20px '}}>
             
-            <div style={{height:'40px', alignContent:'center', textAlign:'center', justifyItems:'center', padding:'10px'}}>
+            <div style={{height:'20px', alignContent:'center', textAlign:'center', justifyItems:'center', padding:'10px'}}>
               <div style={{ display: "flex", alignItems: "center", height:'auto', alignItems:'baseline'}}>
                 <F label="" value={p?.rank} width={30}/>
                 <F label="" value={p?.fullname} width={150} />
@@ -82,22 +82,22 @@ export default function ConsentHospitalization({ onBack }) {
               <span style={{fontSize:'16px'}}>Name/ Rank</span>
             </div>
             
-            <div style={{height:'40px', alignContent:'center', textAlign:'center', justifyItems:'center', padding:'10px'}}>
+            <div style={{height:'20px', alignContent:'center', textAlign:'center', justifyItems:'center', padding:'10px'}}>
               <F label="" value={p?.regno} width={80} />
               <span style={{fontSize:'16px'}}>AFPSN</span>
             </div>
 
-            <div style={{height:'40px', alignContent:'center', textAlign:'center', justifyItems:'center', padding:'10px'}}>
+            <div style={{height:'20px', alignContent:'center', textAlign:'center', justifyItems:'center', padding:'10px'}}>
               <F label="" value={p?.age} width={40} />
               <span style={{fontSize:'16px'}}>Age</span>
             </div>
             
-            <div style={{height:'40px', alignContent:'center', textAlign:'center', justifyItems:'center', padding:'10px'}}>
+            <div style={{height:'20px', alignContent:'center', textAlign:'center', justifyItems:'center', padding:'10px'}}>
               <F label="" value={p?.sex} width={60} />
               <span style={{fontSize:'16px'}}>Sex</span>
             </div>
 
-            <div style={{height:'40px', alignContent:'center', textAlign:'center', justifyItems:'center', padding:'10px'}}>
+            <div style={{height:'20px', alignContent:'center', textAlign:'center', justifyItems:'center', padding:'10px'}}>
               <F label="" value={p?.civilstatus} width={80} />
               <span style={{fontSize:'16px'}}>Civil Status</span>
             </div>            
@@ -108,12 +108,12 @@ export default function ConsentHospitalization({ onBack }) {
         {/* ----------------------- UNIT ASSIGNMENT TO ADDRESS -------------------------- */}
         <div style={{fontSize:'16px', fontFamily:'Calibri', display:'grid', gridTemplateColumns:'0.5fr 1fr', marginTop:'20px'}}>
             
-            <div style={{height:'40px', alignContent:'center', textAlign:'center', justifyItems:'center', padding:'10px'}}>
+            <div style={{height:'20px', alignContent:'center', textAlign:'center', justifyItems:'center', padding:'10px'}}>
               <F label="" value={p?.unit} width={'100%'} />
               <span style={{fontSize:'16px'}}>Unit / Assignment</span>
             </div>
 
-            <div style={{height:'40px', alignContent:'center', textAlign:'center', justifyItems:'center', padding:'10px'}}>
+            <div style={{height:'20px', alignContent:'center', textAlign:'center', justifyItems:'center', padding:'10px'}}>
               <F label="" value={p?.address} width={'100%'} />
               <span style={{fontSize:'16px'}}>Address</span>
             </div>
@@ -125,11 +125,11 @@ export default function ConsentHospitalization({ onBack }) {
 
         {/* ----------------------------CONTRACT TEXT PARAGRAPH------------------------------ */}
       <div style={{textIndent:'70px', fontSize:'16px', fontFamily:'Arial'}}>
-        <p style={{marginTop:'40px', lineHeight:'1.8'}}>
+        <p style={{marginTop:'40px', lineHeight:'1.3'}}>
           I, <G value={p?.fullname} min={250}/> Authorized the department of <G value={extra.dept} min={150}/> Ward <G value={extra.ward} min={100}/>. VLMC, AFPHSC in the performance of evaluation, admission, re-admission, management and treatment. If any unforeseen condition arises in the course, I further request and authorized them to do what they seem advisable.
         </p>
 
-        <p style={{marginTop:'40px', lineHeight:'1.8'}}>
+        <p style={{marginTop:'40px', lineHeight:'1.3'}}>
           The standard and operating procedures of this department have fully explained to me. I acknowledge that no guarantees or assurance has been made as to the result that may be obtained. I CERTIFY that I have read and fully understood the above consent that the explanations therein referred to were made and that all blanks or statements requiring insertion or completion were filed.
         </p>
       </div>
@@ -166,7 +166,7 @@ export default function ConsentHospitalization({ onBack }) {
         </p>
 
 
-      <div style={{display:'flex' , flexDirection: 'column', height:'80px', marginTop:'40px'}}>
+      <div style={{display:'flex' , flexDirection: 'column', height:'80px', marginTop:'20px'}}>
         <div style={{display:'flex', flexDirection:'row'}}>
           <span className="label">Witness:</span>
           <span className="field-line lg" style={{margin:'0px 20px'}}>&nbsp;</span>

@@ -64,6 +64,8 @@ export default function PrintLayout({ children, title = "Form" }) {
           color: #000;
           padding: 0.5in;
           box-sizing: border-box;
+          box-shadow: 0 0 10px rgba(0,0,0,0.15);
+          background: white;
         }
         .form-header { text-align: center;}
           .form-header .org { font-size: 16px; line-height: 1; }
