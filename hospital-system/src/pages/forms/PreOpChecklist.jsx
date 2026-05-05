@@ -159,7 +159,7 @@ export default function PreOpChecklist({ onBack }) {
           <strong>Place initial signature in appropriate box: YES or NO, NA</strong> (not applicable or was not ordered). <strong style={{textDecoration:'underline'}}>Each item must have an entry.</strong> <strong>Remarks</strong> shall be written on the space after the item.
         </p>
 
-        <table style={{ fontSize: 10, marginBottom: 8 }}>
+        <table style={{ fontSize: '12px', marginBottom: 8 }}>
           <thead>
             <tr>
               <th style={{ width: 36 }}>YES</th>
