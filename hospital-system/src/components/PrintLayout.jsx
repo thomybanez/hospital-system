@@ -34,6 +34,21 @@ export default function PrintLayout({ children, title = "Form" }) {
           box-sizing: border-box; /* This is the most important line */
         }
 
+
+        /* Class Underline */
+        .underline  {
+            text-decoration: underline;
+        }
+
+
+
+
+
+
+
+
+
+
         .red { border: 2px solid red;}
         .blue { border: 2px solid blue;}
         .green { border: 2px solid green;}
@@ -64,7 +79,6 @@ export default function PrintLayout({ children, title = "Form" }) {
           color: #000;
           padding: 0.5in;
           box-sizing: border-box;
-          box-shadow: 0 0 10px rgba(0,0,0,0.15);
           background: white;
         }
         .form-header { text-align: center;}
@@ -87,7 +101,6 @@ export default function PrintLayout({ children, title = "Form" }) {
         .field-line.lg  { min-width: 160px; }
         .field-line.xl  { min-width: 250px; }
         .field-line.full { width: 100%; display: block; margin-top: 2px; }
-
       
         .row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 5px; flex-wrap: wrap; }
 

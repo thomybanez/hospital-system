@@ -25,9 +25,9 @@ const ITEMS = [
   "Second bowel preparation/enema done",
   "Voided/Catheterized (encircle) Time: _______________",
   "Pre-op meds skin test done",
-  "Pre-op med administered and charted, specify: _______________",
-  "Medications(s)/Article(s) sent with the patient, specify: _______________",
-  "Latest vital signs: BP= _____ CR= _____ RR= _____ Temp= _____ Weight= _____",
+  "Pre-op med administered and charted, specify: ________________________________________________________________________",
+  "Medications(s)/Article(s) sent with the patient, specify:__________________________________________________________________",
+  "Latest vital signs: BP= ____ CR= ___ RR= ___ Temp= ____ Weight= ____ O2= ____",
   "Standard precaution indicated? If YES, specify: _______________",
   "Culture and sensitivity, specify: _______________",
 ];
@@ -83,42 +83,80 @@ export default function PreOpChecklist({ onBack }) {
         <input placeholder="Anesthesia type" value={extra.anesthesia} onChange={e => setExtra(x => ({ ...x, anesthesia: e.target.value }))} style={{ padding: "6px 8px", borderRadius: 6, border: "1px solid #ccc", fontSize: 12, width: 160 }} />
       </div>
 
-      <PrintLayout title="Pre-Operative Checklist">
-        <div className="form-header">
-          <div className="org">H E A D Q U A R T E R S</div>
-          <div className="org">ARMED FORCES OF THE PHILIPPINES HEALTH SERVICE COMMAND</div>
-          <div className="org">VICTORIANO LUNA MEDICAL CENTER</div>
-          <div className="org">Camp Col Victoriano K Luna, V. Luna Ave, Quezon City</div>
+      
+      <PrintLayout title="Pre-Operative Checklist" >
+          <div className="form-header">
+          <div className="org" style={{fontSize:"12px"}}>H E A D Q U A R T E R S</div>
+          <div className="org" style={{fontSize:"12px"}}>ARMED FORCES OF THE PHILIPPINES HEALTH SERVICE COMMAND</div>
+          <div className="org" style={{fontSize:"12px"}}>VICTORIANO LUNA MEDICAL CENTER</div>
+          <div className="org" style={{fontSize:"12px"}}>Camp Col Victoriano K Luna, V. Luna Ave, Quezon City</div>
           <br></br>
-          <div className="form-title">PRE-OPERATIVE CHECKLIST</div>
+          <div className="org" style={{textAlign:'center', textDecoration:'underline', fontSize:"12px"
+          }}>PRE-OPERATIVE CHECKLIST</div>
         </div>
 
-        <div className="row">
-          <span className="label">Ward: </span><span className="field-line" style={{ minWidth: 80 }}>3A</span>
-          <span style={{ flex: 1 }} />
-          <span className="label">Date: </span><span className="field-line" style={{ minWidth: 120 }}>{extra.date || "\u00A0"}</span>
-        </div>
-        <div className="row">
-          <span className="label">Rank/Name: </span>
-          <span className="field-line" style={{ minWidth: 220 }}>{p ? `${p.rank} ${p.fullname}` : "\u00A0"}</span>
-          <span className="label">Reg#: </span>
-          <span className="field-line" style={{ minWidth: 100 }}>{p?.regno || "\u00A0"}</span>
-        </div>
-        <div className="row">
-          <span className="label">Pre-op Diagnosis: </span>
-          <span className="field-line xl">{p?.diagnosis || "\u00A0"}</span>
-        </div>
-        <div className="row">
-          <span className="label">Proposed Surgical Procedure: </span>
-          <span className="field-line xl">{extra.procedure || p?.diagnosis || "\u00A0"}</span>
-        </div>
-        <div className="row">
-          <span className="label">Type of Anesthesia: </span>
-          <span className="field-line" style={{ minWidth: 200 }}>{extra.anesthesia || "\u00A0"}</span>
+        <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', textAlign:'center'}}>
+          <span className="label" style={{fontSize:"12px"}}>Ward: 
+            <span className="field-line" style={{flex:'1', minWidth: 80, width:'30%' }}>3A</span>
+          </span>
+          <span className="label" style={{fontSize:"12px"}}>Date: 
+            <span className="field-line" style={{flex:'1', minWidth: 120, width:'30%' }}>{extra.date || "\u00A0"}</span>
+          </span>
         </div>
 
-        <p style={{ fontSize: 10, margin: "8px 0 4px" }}>
-          <strong>Place initial signature in appropriate box: YES or NO, NA</strong> (not applicable or was not ordered). <strong>Each item must have an entry.</strong> <strong>Remarks</strong> shall be written on the space after the item.
+        <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', textAlign:'center'}}>
+          <span className="label" style={{fontSize:"12px"}}>Rank/Name: 
+              <span className="field-line" style={{flex:'1', minWidth: 400, width:'90%' }}>{p ? `${p.rank} ${p.fullname}` : "\u00A0"}</span>
+          </span>          
+          <span className="label" style={{fontSize:"12px"}} >Reg#: 
+              <span className="field-line" style={{flex:'1', minWidth: 115, width:'30%' }}>{p?.regno || "\u00A0"}</span>
+          </span>          
+        </div>
+      
+
+        <div style={{ fontSize: "12px", fontFamily: "Arial", marginTop:'5px' }}>
+          Pre-op Diagnosis:&nbsp;
+          {p?.diagnosis ? (
+            <>
+              <span className="field-line">
+                {p?.diagnosis}
+              </span>              
+            </>
+          ) : (
+            <>
+              <span className="field-line" style={{ minWidth: 200 }}></span>
+              <span className="field-line" style={{ minWidth: 200 }}></span>
+              <span className="field-line" style={{ minWidth: 200 }}></span>
+            </>
+          )}
+        </div>
+          
+           
+        <div style={{ fontSize: "12px", fontFamily: "Arial", marginTop: '5px'}}>
+          Proposed Surgical Procedure:&nbsp;
+          {extra.procedure ? (
+            <>
+              <span className="field-line">
+                {extra.procedure}
+              </span>              
+            </>
+          ) : (
+            <>
+              <span className="field-line" style={{ minWidth: 200 }}></span>
+              <span className="field-line" style={{ minWidth: 200 }}></span>
+            </>
+          )}
+        </div>
+
+        <div style={{ fontSize: "12px", fontFamily: "Arial", marginTop: '5px'}}>
+          <span>Type of Anesthesia: </span>
+          <span className="field-line" style={{minWidth: 200, maxWidth:'550px' }}>
+            {extra.anesthesia || "\u00A0"}
+          </span>
+        </div>
+
+        <p style={{ fontSize: 12, margin: "8px 0 4px" }}>
+          <strong>Place initial signature in appropriate box: YES or NO, NA</strong> (not applicable or was not ordered). <strong style={{textDecoration:'underline'}}>Each item must have an entry.</strong> <strong>Remarks</strong> shall be written on the space after the item.
         </p>
 
         <table style={{ fontSize: 10, marginBottom: 8 }}>
@@ -132,15 +170,12 @@ export default function PreOpChecklist({ onBack }) {
           </thead>
           <tbody>
             {ITEMS.map((item, i) => (
-              <tr key={i} className="no-print-interact">
-                {["YES","NO","N/A"].map(val => (
-                  <td key={val} style={{ textAlign: "center", cursor: "pointer" }} onClick={() => toggle(i, val)} className="no-print">
-                    <Box checked={checks[i] === val} />
-                  </td>
-                ))}
-                {/* Print version shows static boxes */}
-                <td style={{ padding: "2px 6px" }}>{item}</td>
-              </tr>
+              <tr key={i}>
+      <td style={{ minWidth: '50px', textAlign: "center" }}></td>
+      <td style={{ minWidth: '50px', textAlign: "center" }}></td>
+      <td style={{ minWidth: '50px', textAlign: "center" }}></td>
+      <td style={{ padding: "2px 6px" }}>{item}</td>
+    </tr>
             ))}
           </tbody>
         </table>
@@ -152,7 +187,7 @@ export default function PreOpChecklist({ onBack }) {
 
         <div style={{ marginTop: 12 }}>
           <span className="label">PACU Nurse Full Name &amp; Signature: </span>
-          <span className="field-line" style={{ minWidth: 200 }}>&nbsp;</span>
+          <span className="field-line" style={{ width: "400px" }}>&nbsp;</span>
         </div>
 
         <table style={{ marginTop: 12, fontSize: 10 }}>
@@ -167,7 +202,7 @@ export default function PreOpChecklist({ onBack }) {
           <tbody>
             {[0,1,2].map(i => (
               <tr key={i}>
-                <td style={{ height: 20 }}>&nbsp;</td>
+                <td style={{ height: 15 }}>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
