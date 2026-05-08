@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import PatientTable from "./PatientTable";
 import AddPatientForm from "./AddPatientForm";
 import FormsHub from "./pages/FormsHub.jsx";
+import Login from "./Login";
 
 export const API_URL =
   "https://script.google.com/macros/s/AKfycbxRz6y0AKfxFBWK--C8u7Ub9MfslJSG5W8iGEVugrUId7Ljqw5vKWolmL893SlRyhb8/exec";
@@ -12,8 +13,12 @@ export default function App() {
   const [status, setStatus]   = useState("");
   const [loading, setLoading] = useState(false);
   const [view, setView]       = useState("list"); // "list" | "add" | "forms"
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    localStorage.getItem("hospital_auth") === "true"
+  );
 
   async function loadRecords() {
+    if (!isAuthenticated) return;
     setLoading(true);
     setStatus("Loading...");
     try {
@@ -30,15 +35,77 @@ export default function App() {
     }
   }
 
-  useEffect(() => { loadRecords(); }, []);
+  async function handleLogin(username, password, mode = "login") {
+    // Hardcoded admin fallback for offline support
+    if (username === "admin" && password === "admin") {
+      setIsAuthenticated(true);
+      localStorage.setItem("hospital_auth", "true");
+      setStatus("");
+      return;
+    }
+
+    setLoading(true);
+    setStatus("");
+    try {
+      // The user mentioned "save the user and password at my appscript back end"
+      // We use the mode ('login' or 'register') as the action
+      const res = await fetch(API_URL, {
+        method: "POST",
+        redirect: "follow",
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify({ action: mode, username, password }),
+      });
+      const data = await res.json();
+      
+      if (data.success) {
+        setIsAuthenticated(true);
+        localStorage.setItem("hospital_auth", "true");
+        // records will be loaded via useEffect
+      } else {
+        setStatus(data.error || `Failed to ${mode}. Please try again.`);
+      }
+    } catch (err) {
+      setStatus(`${mode === "login" ? "Login" : "Registration"} failed: ` + err.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function handleLogout() {
+    setIsAuthenticated(false);
+    localStorage.removeItem("hospital_auth");
+    setRecords([]);
+  }
+
+  useEffect(() => { 
+    if (isAuthenticated) {
+      loadRecords(); 
+    }
+  }, [isAuthenticated]);
 
   function goToList() {
     setView("list");
     loadRecords();
   }
 
+  if (!isAuthenticated) {
+    return <Login onLogin={handleLogin} loading={loading} error={status} />;
+  }
+
   return (
     <div style={{ padding: 16, maxWidth: 900, margin: "0 auto" }}>
+      <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 10 }}>
+        <button 
+          onClick={handleLogout}
+          style={{ 
+            background: "none", border: "none", color: "#e74c3c", 
+            cursor: "pointer", fontSize: 13, fontWeight: 600 
+          }}
+        >
+          Logout ⏻
+        </button>
+      </div>
+
       {view === "list" && (
         <>
           <h1 style={{ marginBottom: 12 }}>🏥 Hospital Records</h1>

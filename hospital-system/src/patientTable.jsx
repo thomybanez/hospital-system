@@ -124,6 +124,29 @@ export default function PatientTable({
 
   return (
     <div>
+      {/* Top action buttons */}
+      <div style={{ display:"flex", gap:10, marginTop:14 }}>
+        <button
+          onClick={onOpenForms}
+          style={{
+            flex:1, padding:14, border:"none", borderRadius:10,
+            background:"#4a90d9", color:"#fff",
+            fontSize:15, fontWeight:700, cursor:"pointer",
+          }}
+        >
+          📋 Forms
+        </button>
+        <button
+          onClick={onAddPatient}
+          style={{
+            flex:1, padding:14, border:"none", borderRadius:10,
+            background:"#1a1a2e", color:"#fff",
+            fontSize:15, fontWeight:700, cursor:"pointer",
+          }}
+        >
+          ＋ Add Patient
+        </button>
+      </div>
 
       {/* Status bar */}
       <div style={{ marginBottom:12, minHeight:24 }}>
@@ -289,29 +312,7 @@ export default function PatientTable({
         );
       })}
 
-      {/* Bottom action buttons */}
-      <div style={{ display:"flex", gap:10, marginTop:14 }}>
-        <button
-          onClick={onOpenForms}
-          style={{
-            flex:1, padding:14, border:"none", borderRadius:10,
-            background:"#4a90d9", color:"#fff",
-            fontSize:15, fontWeight:700, cursor:"pointer",
-          }}
-        >
-          📋 Forms
-        </button>
-        <button
-          onClick={onAddPatient}
-          style={{
-            flex:1, padding:14, border:"none", borderRadius:10,
-            background:"#1a1a2e", color:"#fff",
-            fontSize:15, fontWeight:700, cursor:"pointer",
-          }}
-        >
-          ＋ Add Patient
-        </button>
-      </div>
+      
     </div>
   );
 }
