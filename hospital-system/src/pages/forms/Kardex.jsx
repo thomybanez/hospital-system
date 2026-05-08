@@ -19,37 +19,70 @@ export default function Kardex({ onBack }) {
       </div>
 
       <PrintLayout title="Kardex">
-        <div className="form-header">
-          <div className="org">H E A D Q U A R T E R S</div>
-          <div className="org">ARMED FORCES OF THE PHILIPPINES HEALTH SERVICE COMMAND</div>
-          <div className="org">VICTORIANO LUNA MEDICAL CENTER</div>
-          <div className="org">Camp Colonel Victoriano K-Luna, V. Luna Avenue, Quezon City</div>
-          <div style={{ display: "flex", justifyContent: "space-between", marginTop: 4 }}>
-            <span style={{ fontWeight: "bold", fontSize: 14 }}>KARDEX</span>
-            <span><strong>Blood Type: </strong><span className="field-line" style={{ minWidth: 60 }}>&nbsp;</span></span>
+        <div style={{fontSize:'14px', textAlign:'center'}}>
+          <div>H E A D Q U A R T E R S</div>
+          <div>ARMED FORCES OF THE PHILIPPINES HEALTH SERVICE COMMAND</div>
+          <div>VICTORIANO LUNA MEDICAL CENTER</div>
+          <div>Camp Colonel Victoriano K-Luna, V. Luna Avenue, Quezon City</div>
+
+          <div style={{display: "flex", marginTop:'20px'}}>
+            <span style={{flex:'1'}}></span>
+
+            <span style={{flex:'1', display:'flex', justifyContent:'center', alignItems:'center',fontSize:'20px', height:'50px', fontWeight:'500', textDecoration:'underline'}}>KARDEX</span>
+
+            <div style={{flex:'1', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
+              <span style={{display:'flex', flexDirection:'column', border: '3px solid black', height:'50px', width:'40%', textAlign:'left', justifyContent:'center'}}>
+                <span style={{fontSize:'14px', fontWeight:'bold', marginLeft:'5%', width:'80%'}}>Blood</span>
+                <span style={{fontSize:'14px', fontWeight:'bold', marginLeft:'5%', width:'80%'}}>Type:</span>                              
+              </span>
+            </div>
           </div>
         </div>
 
-        <div className="row" style={{ marginTop: 6 }}>
-          <span className="label">Rank/Name/BOS:</span>
-          <F value={p ? `${p.rank} ${p.fullname} / ${p.bos}` : ""} width={220} />
-          <span className="label">AFPSN:</span>
-          <F value={p?.afpsn} width={90} />
-          <span className="label">Age:</span>
-          <F value={p?.age} width={40} />
+        <div style={{display:'flex', flexDirection:'row', alignItems:'center', marginTop:'10px', fontSize:'12px'}}>
+          <div style={{flex:'4', display:'flex', textAlign:"center"}}>
+            Rank/Name/BOS:
+            <F value={p ? `${p.rank} ${p.fullname} ${p.bos}` : ""} />
+          </div>
+
+          <div style={{flex:'1', display:'flex', textAlign:"center"}}>
+            AFPSN:
+            <F value={p?.afpsn}/>
+          </div>
+
+          <div style={{flex:'1', display:'flex', textAlign:"center"}}>
+            Age:
+            <F value={p?.age}/>
+          </div>          
         </div>
-        <div className="row">
-          <span className="label">Reg No.</span>
-          <F value={p?.regno} width={80} />
-          <span className="label">DOB:</span>
-          <F value={p?.dob} width={90} />
-          <span className="label">Religion:</span>
-          <F value={p?.religion} width={100} />
-          <span className="label">Height</span>
-          <F value={p?.height} width={60} />
-          <span className="label">Weight:</span>
-          <F value={p?.weight} width={60} />
+        
+        <div style={{display:'flex', fontSize:'12px', textAlign:"center"}}>
+          <div style={{flex:'1', display:'flex'}}>
+            Reg&nbsp;No:
+            <F value={p?.regno} />
+          </div>
+          
+          <div style={{flex:'1', display:'flex'}}>
+            DOB:
+            <F value={p?.dob} />
+          </div>
+
+          <div style={{flex:'1', display:'flex'}}>
+            Religion:
+            <F value={p?.religion}/>
+          </div>
+
+          <div style={{flex:'1' , display:'flex'}}>
+            Height:
+            <F value={p?.height} />
+          </div>
+
+          <div style={{flex:'1', display:'flex'}}>
+            Weight:
+            <F value={p?.weight}/>
+          </div>
         </div>
+
         <div className="row">
           <span className="label">Unit Assignment:</span>
           <F value={p?.unit} width={150} />

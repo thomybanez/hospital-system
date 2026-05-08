@@ -105,7 +105,7 @@ export default function Login({ onLogin, loading, error }) {
           {loading ? "Processing..." : (isRegister ? "Register & Save" : "Login")}
         </button>
 
-        <button 
+        <button
           type="button" 
           style={s.toggle} 
           onClick={() => setIsRegister(!isRegister)}

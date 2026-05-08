@@ -150,13 +150,8 @@ export default function PatientTable({
 
       {/* Status bar */}
       <div style={{ marginBottom:12, minHeight:24 }}>
-        {loading  && <span style={{ color:"#7a8499" }}>Loading…</span>}
-        {!loading && status   && <span style={{ color:"#e74c3c" }}>{status}</span>}
-        {opStatus && (
-          <span style={{ color: opStatus.startsWith("✅") ? "#27ae60" : "#e74c3c" }}>
-            {opStatus}
-          </span>
-        )}
+        {loading && <span style={{ color:"#7a8499" }}>Loading…</span>}
+        {!loading && status && <span style={{ color:"#e74c3c" }}>{status}</span>}
       </div>
 
       {/* Search + sort */}
@@ -306,6 +301,11 @@ export default function PatientTable({
                     </button>
                   )}
                 </div>
+                {opStatus && expandedIdx === i && (
+                  <div style={{ marginTop:10, color: opStatus.startsWith("✅") ? "#27ae60" : "#e74c3c", fontSize:13 }}>
+                    {opStatus}
+                  </div>
+                )}
               </div>
             )}
           </div>
