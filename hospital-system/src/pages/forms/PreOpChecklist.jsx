@@ -64,13 +64,13 @@ export default function PreOpChecklist({ onBack }) {
     setChecks(next);
   };
 
-  const Box = ({ checked }) => (
+  const Box = ({ checked, blocked }) => (
     <span style={{
       display: "inline-block", width: 12, height: 12,
       border: "1px solid #000", marginRight: 2, verticalAlign: "middle",
-      background: checked ? "#000" : "#fff",
+      background: blocked ? "#000" : (checked ? "#000" : "#fff"),
       fontSize: 9, textAlign: "center", lineHeight: "12px", color: "#fff",
-    }}>{checked ? "✓" : ""}</span>
+    }}>{(checked && !blocked) ? "✓" : ""}</span>
   );
 
   return (
@@ -125,8 +125,7 @@ export default function PreOpChecklist({ onBack }) {
           ) : (
             <>
               <span className="field-line" style={{ minWidth: 200 }}></span>
-              <span className="field-line" style={{ minWidth: 200 }}></span>
-              <span className="field-line" style={{ minWidth: 200 }}></span>
+              <span className="field-line" style={{ minWidth: 200 }}></span>             
             </>
           )}
         </div>
@@ -159,7 +158,7 @@ export default function PreOpChecklist({ onBack }) {
           <strong>Place initial signature in appropriate box: YES or NO, NA</strong> (not applicable or was not ordered). <strong style={{textDecoration:'underline'}}>Each item must have an entry.</strong> <strong>Remarks</strong> shall be written on the space after the item.
         </p>
 
-        <table style={{ fontSize: '12px', marginBottom: 8 }}>
+        <table style={{boxSizing:'border-box', height:'100%', width:'100%', fontSize: '12px', marginBottom: 8 }}>
           <thead>
             <tr>
               <th style={{ width: 36 }}>YES</th>
@@ -167,26 +166,31 @@ export default function PreOpChecklist({ onBack }) {
               <th style={{ width: 36 }}>N/A</th>
               <th></th>
             </tr>
-          </thead>
+          </thead >
           <tbody>
-            {ITEMS.map((item, i) => (
-              <tr key={i}>
-      <td style={{ minWidth: '50px', textAlign: "center" }}></td>
-      <td style={{ minWidth: '50px', textAlign: "center" }}></td>
-      <td style={{ minWidth: '50px', textAlign: "center" }}></td>
-      <td style={{ padding: "2px 6px" }}>{item}</td>
-    </tr>
-            ))}
+            {ITEMS.map((item, i) => {
+              const isBlocked = item.includes("Standard precaution indicated") || item.includes("Culture and sensitivity") || item.includes("Latest vital") || item.includes("NPO since");
+              return (
+                <tr key={i}>
+                  <td style={{ height:'auto', textAlign: "center" }}></td>
+                  <td style={{ height:'auto',textAlign: "center", padding:'0' }}>                    
+                    {isBlocked && <div style={{padding:'0', backgroundColor:'black', width: '100%', height: '100%'}} />}
+                  </td>
+                  <td style={{ height:'auto', textAlign: "center" }}></td>
+                  <td style={{ height:'auto' }}>{item}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
 
-        <div className="row">
-          <span className="label">Remarks: </span>
-          <span className="field-line xl">&nbsp;</span>
+        <div style={{fontSize:'10px'}}>
+          <span className="label" style={{fontSize:'12px'}}>Remarks: </span>
+          <span className="field-line xl" style={{width:'90%'}}>&nbsp;</span>
         </div>
 
-        <div style={{ marginTop: 12 }}>
-          <span className="label">PACU Nurse Full Name &amp; Signature: </span>
+        <div style={{fontSize:'10px', marginTop: 12 }}>
+          <span className="label" style={{fontSize:'12px'}}>PACU Nurse Full Name &amp; Signature: </span>
           <span className="field-line" style={{ width: "400px" }}>&nbsp;</span>
         </div>
 
@@ -202,7 +206,7 @@ export default function PreOpChecklist({ onBack }) {
           <tbody>
             {[0,1,2].map(i => (
               <tr key={i}>
-                <td style={{ height: 15 }}>&nbsp;</td>
+                <td style={{ height: 1 }}>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
