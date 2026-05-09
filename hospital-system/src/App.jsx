@@ -98,8 +98,7 @@ export default function App() {
         <button 
           onClick={handleLogout}
           style={{ 
-            background: "none", border: "none", color: "#e74c3c", 
-            cursor: "pointer", fontSize: 13, fontWeight: 600 
+            background: "#e74c3c", border: "none", color: "white", cursor: "pointer", fontSize: 13, fontWeight: 600, borderRadius:'4px', padding:'10px 14px'
           }}
         >
           Logout ⏻
