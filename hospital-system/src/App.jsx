@@ -94,7 +94,7 @@ export default function App() {
 
   return (
     <div style={{ padding: 16, maxWidth: 900, margin: "0 auto" }}>
-      <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 10 }}>
+      <div className="no-print" style={{ display: "flex", justifyContent: "flex-end", marginBottom: 10 }}>
         <button 
           onClick={handleLogout}
           style={{ 

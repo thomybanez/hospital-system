@@ -68,7 +68,7 @@ export default function Login({ onLogin, loading, error }) {
   return (
     <div style={s.container}>
       <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-        <h1 style={{ fontSize: 24, margin: 0 }}>🏥 Hospital System</h1>
+        <h1 style={{ fontSize: 24, margin: 0 }}>Hospi-Sys</h1>
         <p style={{ color: "#7a8499", fontSize: 14 }}>
           {isRegister ? "Create a new account" : "Please sign in to continue"}
         </p>
