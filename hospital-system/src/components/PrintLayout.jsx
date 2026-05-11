@@ -1,7 +1,8 @@
 import { useState } from "react";
 
+
 export default function PrintLayout({ children, title = "Form" }) {
-  const [paper, setPaper] = useState("letter"); // "letter" | "legal"
+  const [paper, setPaper] = useState("a4"); // "a4" | "legal"
 
   return (
     <div>
@@ -63,15 +64,15 @@ export default function PrintLayout({ children, title = "Form" }) {
           .back-btn { display: none !important; }
           body { margin: 0; }
           @page {
-            size: ${paper === "legal" ? "8.5in 13in" : "8.5in 11in"};
-            margin: 0.5in;
+            size: A4;
+            margin: 0 0;
           }
           .page-break { page-break-after: always; }
           .form-page { page-break-inside: avoid; }
         }
         .print-page {
-          width: ${paper === "legal" ? "10in" : "8.5in"};
-          min-height: ${paper === "legal" ? "12in" : "10in"};
+          width: 210mm;
+          max-height: 297mm;
           margin: 0 auto;
           background: #fff;
           font-family: Arial, sans-serif;

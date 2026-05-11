@@ -52,11 +52,11 @@ export default function Kardex({ onBack }) {
 
           <div style={{flex:'1', display:'flex', textAlign:"center"}}>
             Age:
-            <F value={p?.age}/>
+            <F value={p?.age != null ? `${p.age} y/o` : ""}/>
           </div>          
         </div>
         
-        <div style={{display:'flex', fontSize:'12px', textAlign:"center"}}>
+        <div style={{display:'flex', fontSize:'12px', alignItems:"center", textAlign:"center"}}>
           <div style={{flex:'1', display:'flex'}}>
             Reg&nbsp;No:
             <F value={p?.regno} />
@@ -74,27 +74,40 @@ export default function Kardex({ onBack }) {
 
           <div style={{flex:'1' , display:'flex'}}>
             Height:
-            <F value={p?.height} />
+            <F value={p?.height != null ? `${p.height} cm` : ""} />
           </div>
 
-          <div style={{flex:'1', display:'flex'}}>
+          <div style={{flex:'0.5', display:'flex'}}>
             Weight:
-            <F value={p?.weight}/>
+            <F value={p?.weight != null ? `${p.weight} cm` : ""} width={70}/>
           </div>
         </div>
 
-        <div className="row">
-          <span className="label">Unit Assignment:</span>
-          <F value={p?.unit} width={150} />
-          <span className="label">Date/Time Admitted:</span>
-          <F value={p?.admitted} width={120} />
-          <span className="label">Trans-in:</span>
-          <F value={p?.transin} width={80} />
+        <div style={{display:'flex', fontSize:'12px', alignItems:"center", textAlign:"center"}}>
+
+          <div style={{flex:'2', display:'flex', flexDirection:'row'}}>
+            Unit&nbsp;Assignment:
+            <F value={p?.unit}/>
+          </div>
+          
+          <div style={{flex:'2', display:'flex'}}>
+            Date/Time&nbsp;Admitted:
+            <F value={p?.admitted}/>
+          </div>
+          
+          <div style={{flex:'1', display:'flex'}} >
+            Trans&nbsp;in:
+            <F value={p?.transin}/>
+          </div>         
         </div>
-        <div className="row">
-          <span className="label">Impression/Diagnosis:</span>
-          <span className="field-line" style={{ minWidth: 420, display: "inline-block" }}>{p?.diagnosis || "\u00A0"}</span>
+
+        <div style={{display:'inline'}}>
+          Impression/Diagnosis:
+          <p className="field-line" style={{display:'inline'}}>   
+            {p?.diagnosis || "\u00A0"}            
+          </p>
         </div>
+
         <div className="row">
           <span className="label">Surgery Done:</span>
           <span className="field-line" style={{ minWidth: 340 }}>&nbsp;</span>

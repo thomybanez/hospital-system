@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+
 export default function Login({ onLogin, loading, error }) {
   const [isRegister, setIsRegister] = useState(false);
   const [username, setUsername] = useState("");
@@ -67,11 +68,11 @@ export default function Login({ onLogin, loading, error }) {
 
   return (
     <div style={s.container}>
-      <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-        <h1 style={{ fontSize: 24, margin: 0 }}>Hospi-Sys</h1>
+      <div style={{ textAlign: "center", marginBottom: "2rem", marginTop:'100px' }}>
+        <h1 style={{ fontSize: 24, margin: 0 }}>🏥 Hospital System</h1>    
         <p style={{ color: "#7a8499", fontSize: 14 }}>
           {isRegister ? "Create a new account" : "Please sign in to continue"}
-        </p>
+        </p> 
       </div>
       
       <form style={s.form} onSubmit={handleSubmit}>
@@ -108,9 +109,9 @@ export default function Login({ onLogin, loading, error }) {
         <button
           type="button" 
           style={s.toggle} 
-          onClick={() => setIsRegister(!isRegister)}
+          /*onClick={() => setIsRegister(!isRegister)}*/
         >
-          {isRegister ? "Already have an account? Login" : "Need to register? Save new user"}
+          {isRegister ? "Already have an account? Login" : "Need to register? Contact admin"}
         </button>
       </form>
     </div>
