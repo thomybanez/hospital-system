@@ -351,24 +351,7 @@ export default function Kardex({ onBack }) {
             ))}
           </tbody>
         </table>
-
-        {/* Nursing Care Plan */}
-        <div style={{ fontWeight: "bold", marginTop: 10, marginBottom: 4, fontSize: 11 }}>NURSING CARE PLAN</div>
-        <table style={{ fontSize: 9 }}>
-          <thead>
-            <tr>
-              <th style={{ width: "15%" }}>Date/Time</th>
-              <th style={{ width: "28%" }}>Nursing Diagnosis</th>
-              <th style={{ width: "28%" }}>Nursing Goals</th>
-              <th style={{ width: "29%" }}>Nursing Intervention</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Array(12).fill(0).map((_, i) => (
-              <tr key={i}><td style={{ height: 18 }}>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-            ))}
-          </tbody>
-        </table>
+        
       </PrintLayout>
     </div>
   );
