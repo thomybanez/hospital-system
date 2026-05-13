@@ -39,7 +39,7 @@ export default function Kardex({ onBack }) {
           </div>
         </div>
 
-        <div style={{display:'flex', flexDirection:'row', alignItems:'center', marginTop:'10px', fontSize:'12px'}}>
+        <div style={{display:'flex', flexDirection:'row', alignItems:'center', marginTop:'10px', fontSize:'12px', lineHeight:'1.3'}}>
           <div style={{flex:'4', display:'flex', textAlign:"center"}}>
             Rank/Name/BOS:
             <F value={p ? `${p.rank} ${p.fullname} ${p.bos}` : ""} />
@@ -56,7 +56,7 @@ export default function Kardex({ onBack }) {
           </div>          
         </div>
         
-        <div style={{display:'flex', fontSize:'12px', alignItems:"center", textAlign:"center"}}>
+        <div style={{display:'flex', fontSize:'12px', alignItems:"center", textAlign:"center", lineHeight:'1.3'}}>
           <div style={{flex:'1', display:'flex'}}>
             Reg&nbsp;No:
             <F value={p?.regno} />
@@ -74,16 +74,29 @@ export default function Kardex({ onBack }) {
 
           <div style={{flex:'1' , display:'flex'}}>
             Height:
-            <F value={p?.height != null ? `${p.height} cm` : ""} />
+            <F value={
+              p?.height != null &&
+              p?.height != undefined &&
+              p?.height != ""
+                ? `${p.weight} ft`
+                : ""
+            }/>
           </div>
 
           <div style={{flex:'0.5', display:'flex'}}>
             Weight:
-            <F value={p?.weight != null ? `${p.weight} cm` : ""} width={70}/>
+            <F value={
+            p?.weight !== null &&
+            p?.weight !== undefined &&
+            p?.weight !== ""
+              ? `${p.weight} kg`
+              : ""
+            }
+            width={70}/>
           </div>
         </div>
 
-        <div style={{display:'flex', fontSize:'12px', alignItems:"center", textAlign:"center"}}>
+        <div style={{display:'flex', fontSize:'12px', alignItems:"center", textAlign:"center", lineHeight:'1.5'}}>
 
           <div style={{flex:'2', display:'flex', flexDirection:'row'}}>
             Unit&nbsp;Assignment:
@@ -101,91 +114,240 @@ export default function Kardex({ onBack }) {
           </div>         
         </div>
 
-        <div style={{display:'inline'}}>
+        <div style={{display:'flex', fontSize:'12px', lineHeight:'1.3', textAlign:'justify'}}>
           Impression/Diagnosis:
-          <p className="field-line" style={{display:'inline'}}>   
-            {p?.diagnosis || "\u00A0"}            
-          </p>
+          {p?.diagnosis ? (
+            <>
+              <span className="field-line">
+                {p?.diagnosis}
+              </span>              
+            </>
+          ) : (
+            <>
+              <span className="field-line" style={{ minWidth: 200 }}></span>
+              <span className="field-line" style={{ minWidth: 200 }}></span>             
+            </>
+          )}
         </div>
 
-        <div className="row">
-          <span className="label">Surgery Done:</span>
-          <span className="field-line" style={{ minWidth: 340 }}>&nbsp;</span>
+        <div style={{fontSize:'12px', lineHeight:'1.3'}}>
+          <span style={{display:'flex', flexDirection:'row'}}>Surgery&nbsp;Done:
+          <span className="field-line" style={{ minWidth: 100 }}></span>
+          </span>
         </div>
-        <div className="row">
-          <span className="label">Date of Surgery:</span>
-          <F value={""} width={100} />
-          <span className="label">Allergy/ies:</span>
-          <F value={p?.allergies} width={180} />
+
+        <div style={{display:'flex', flexDirection:'row', fontSize:'12px', lineHeight:'1.3'}}>
+          <span style={{flex:'1', display:'flex'}}>
+            Date&nbsp;of&nbsp;Surgery:
+            <F value={""} width={100}/>
+          </span>
+            
+          <span style={{flex:'1', display:'flex'}}>
+            Allergy/ies:
+            <F value={p?.allergies} width={180} />
+          </span>            
         </div>
-        <div className="row">
-          <span className="label">Patient Safety Issue/s:</span>
-          <F value={p?.safety} width={300} />
+
+        <div style={{fontSize:'12px', lineHeight:'1.3'}}>
+          <span style={{display:'flex'}}>Patient&nbsp;Safety&nbsp;Issue/s:
+            <F value={p?.safety} width={300} />
+          </span>
         </div>
 
         {/* Status grid */}
-        <table style={{ marginTop: 8, fontSize: 9 }}>
+        <table style={{ marginTop: 8, fontSize: 10 }}>
           <tbody>
             <tr>
-              <td style={{ width: "14%", verticalAlign: "top", padding: 4 }}>
+              <td style={{ width: "20%", verticalAlign: "top", padding: 4 }}>
                 <strong>Mental Status</strong><br />
-                ___ Conscious<br />___ Drowsy<br />___ Stuporous<br />___ Unconscious<br />___ Comatose<br />
-                <strong>Level of Care</strong><br />___ I &nbsp;&nbsp; ___II<br />___ III &nbsp;___IV
+                __________<br />
+                <br/>
+                <br/>
+                ___ Conscious<br />
+                ___ Drowsy<br />
+                ___ Stuporous<br />
+                ___ Un-conscious<br />
+                ___ Comatose<br />
+
+                <strong>Level of Care</strong><br />
+                ___ I &nbsp;&nbsp; 
+                ___ II<br />
+                ___ III &nbsp;
+                ___ IV
               </td>
-              <td style={{ width: "14%", verticalAlign: "top", padding: 4 }}>
+
+              <td style={{ width: "20%", verticalAlign: "top", padding: 4 }}>
                 <strong>Motor Status:</strong><br />
-                ___ Normal<br />___ Slurred Speech<br />___ Hemiplegia<br />___ Paraplegia<br />___ Paresis<br />Others:<br />___________
+                ___ Normal<br />
+                ___ Slurred Speech<br />
+                ___ Hemiplegia<br />
+                ___ Paraplegia<br />
+                ___ Paresis<br />
+                Others:<br />
+                ________________<br/>
+                ________________<br/>
+                <br/>
+
+
+                <strong >Motor/Sensory</strong>
+                <div style={{marginLeft:'15px', marginTop:'5px', position:'relative', width:'80px', height:'50px' }}>                  
+                  {/* vertical line */}
+                  <div
+                    style={{
+                      position:'absolute',
+                      left:'50%',
+                      top:0,
+                      bottom:0,
+                      borderLeft:'1px solid black'
+                    }}
+                  />
+
+                  {/* horizontal line */}
+                  <div
+                    style={{
+                      position:'absolute',
+                      top:'50%',
+                      left:0,
+                      right:0,
+                      borderTop:'1px solid black'
+                    }}
+                  />
+                  </div>
+
+
               </td>
-              <td style={{ width: "14%", verticalAlign: "top", padding: 4 }}>
+
+              <td style={{width: "15%", verticalAlign: "top", padding: 4 }}>
                 <strong>Activities</strong><br />
-                ___ Ambulant<br />___ Dangle and Sit up<br />___ Bedrest w/ BRP<br />___ CBR w/o BRP<br />Others:<br />___________
+                ___ Ambulant<br />
+                ___ Dangle and Sit up<br />
+                ___ Bedrest w/ BRP<br />
+                ___ CBR w/o BRP<br />
+                <br/>
+                Others:<br />
+                ________________<br/>
+                ________________<br/>
               </td>
-              <td style={{ width: "22%", verticalAlign: "top", padding: 4 }}>
-                <strong>Medical Equipment/Devices</strong><br />
-                ( ) None<br />( ) Oxygen Delivery System ______<br />
-                ( ) Endotracheal/Tracheostomy Tube<br />
-                Mode: ( )AC ( ) SIMV<br />
-                VT_____ BUR_____<br />FiO2____ PEEP ____<br />cmH2O_______<br />PSV__________
-              </td>
+
               <td style={{ width: "10%", verticalAlign: "top", padding: 4 }}>
-                __ NGT<br />__ IJ Cath<br />__ CVP Line<br />__ CTT<br />__ IFC<br />Others:<br />______<br />______
+                <strong>Medical Equipment/Devices</strong><br />
+                ( ) None<br />
+                ( )Oxygen Delivery System ______<br />
+                ( ) Endotracheal/Tracheostomy Tube to Mechanical Ventilator/ T-Piece Settings:<br />
+                Mode: ( )AC ( ) SIMV<br />
+                <br/>
+                VT______ BUR______<br />
+                FiO2______ PEEP ______<br />
+                cmH2O____________<br />
+                PSV_____________
               </td>
-              <td style={{ width: "12%", verticalAlign: "top", padding: 4 }}>
+              <td style={{ width: "20%", verticalAlign: "top", padding: 4 }}>
+                __ NGT _____<br />
+                __ IJ Cath _____<br />
+                __ CVP Line _____<br />
+                __ CTT _____<br />
+                __ IFC _____<br />
+                Others:<br />
+                ___________<br />
+                ___________<br />
+                ___________<br />
+                ___________<br />
+                ___________<br />
+                ___________<br />
+              </td>
+              <td style={{ width: "20%", verticalAlign: "top", padding: 4 }}>
                 <strong>Diet:</strong><br />
-                ___ NPO<br />___ DAT<br />___ Soft<br />___ Clear Liq<br />___ Gen Liq<br />___ Low Salt<br />___ Low Cholesterol<br />___ Uremic<br />___ Diabetic<br />Others: _______
+                ___ NPO<br />
+                ___ DAT<br />
+                ___ Soft<br />
+                ___ Clear Liq<br />
+                ___ Gen Liq<br />
+                ___ Low Salt<br />
+                ___ Low Cholesterol<br />
+                ___ Uremic<br />
+                ___ Diabetic<br />
+                Others: ____________
               </td>
-              <td style={{ width: "14%", verticalAlign: "top", padding: 4 }}>
+              <td style={{ width: "20%", verticalAlign: "top", padding: 4 }}>
                 <strong>Special Info:</strong><br />
-                Neuro VS q ____<br />VS q ______<br />BP ________<br />CVP reading q __<br />Weigh _______<br />Abd girth q ____<br />I &amp; O __________<br />Radiation ______
+                Neuro VS q ____<br />
+                VS q ______<br />
+                BP ________<br />
+                CVP reading q __<br />
+                Weigh _______<br />
+                Abd girth q ____<br />
+                I &amp; O __________<br />
+                Radiation ______
               </td>
             </tr>
           </tbody>
         </table>
 
         {/* Labs / IV Fluids */}
-        <table style={{ marginTop: 6, fontSize: 9 }}>
+        <table style={{ marginTop: 6, fontSize: 9, width: '100%', borderCollapse: 'collapse' }}>
           <tbody>
             <tr>
-              <th style={{ width: "10%" }}>Date Ordered</th>
-              <th style={{ width: "30%" }}>Laboratory Diagnostics Procedures</th>
-              <th style={{ width: "20%" }}>Latest Labs</th>
-              <th style={{ width: "10%" }}>Date Ordered</th>
-              <th style={{ width: "30%" }}>IV Fluids</th>
+              <th style={{ width: '10%', border: '1px solid black' }}>Date Ordered</th>
+              <th style={{ width: '30%', border: '1px solid black' }}>Laboratory Diagnostics Procedures</th>
+              <th style={{ width: '20%', border: '1px solid black' }}>Latest Labs</th>
+              <th style={{ width: '10%', border: '1px solid black' }}>Date Ordered</th>
+              <th style={{ width: '30%', border: '1px solid black' }}>IV Fluids</th>
             </tr>
-            {["Hgb:","Hct:","WBC:","PC:","","Crea:","BUN:","K+","Na+:","Mg+:","Ca+:","Alb:","APTT:"].map((lab, i) => (
-              <tr key={i}><td>&nbsp;</td><td>&nbsp;</td><td>{lab}</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            {['Hgb:','Hct:','WBC:','PC:','','Crea:','BUN:','K+','Na+:','Mg+:','Ca+:','Alb:','APTT:'].map((lab, i) => (
+              <tr key={i}>
+                <td style={{ border: '1px solid black' }}>&nbsp;</td>
+                <td style={{ border: '1px solid black' }}>&nbsp;</td>
+                <td style={{ border: '1px solid black' }}>{lab}</td>
+                <td style={{ border: '1px solid black' }}>&nbsp;</td>
+                <td style={{ border: '1px solid black' }}>&nbsp;</td>
+              </tr>
             ))}
             <tr>
-              <th>Date Ordered</th><th>Referrals</th><th>Other Labs</th><td colSpan={2}><strong>Blood Products</strong></td>
+              <th style={{ border: '1px solid black' }}>Date Ordered</th>
+              <th style={{ border: '1px solid black' }}>Referrals</th>
+              <th style={{ border: '1px solid black' }}>Other Labs</th>
+              <th colSpan={2} style={{ border: '1px solid black', textAlign: 'center' }}>Blood Products</th>
             </tr>
-            {[0,1,2,3,4,5].map(i => (
-              <tr key={i}><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td colSpan={2}><span style={{ display:"flex", gap:4 }}><span style={{flex:1}}>Type</span><span style={{flex:1}}>Req</span><span style={{flex:1}}>Avail</span><span style={{flex:1}}>Transfused</span></span></td></tr>
+            <tr>
+              <td style={{ border: '1px solid black' }}>&nbsp;</td>
+              <td style={{ border: '1px solid black' }}>&nbsp;</td>
+              <td style={{ border: '1px solid black' }}>&nbsp;</td>
+              <td colSpan={2} style={{ border: '1px solid black', padding: 0 }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', width: '100%' }}>
+                  <div style={{ borderRight: '1px solid black', borderBottom: '1px solid black', padding: '2px', textAlign: 'center' }}>Type</div>
+                  <div style={{ borderRight: '1px solid black', borderBottom: '1px solid black', padding: '2px', textAlign: 'center' }}>Req</div>
+                  <div style={{ borderRight: '1px solid black', borderBottom: '1px solid black', padding: '2px', textAlign: 'center' }}>Available</div>
+                  <div style={{ borderBottom: '1px solid black', padding: '2px', textAlign: 'center' }}>Transfused</div>
+                </div>
+              </td>
+            </tr>
+            {Array(6).fill(0).map((_, i) => (
+              <tr key={i}>
+                <td style={{ border: '1px solid black' }}>&nbsp;</td>
+                <td style={{ border: '1px solid black' }}>&nbsp;</td>
+                <td style={{ border: '1px solid black' }}>&nbsp;</td>
+                <td colSpan={2} style={{ border: '1px solid black', padding: 0 }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', width: '100%' }}>
+                    <div style={{ borderRight: '1px solid black', borderBottom: i === 5 ? 'none' : '1px solid black', minHeight: 16 }}>&nbsp;</div>
+                    <div style={{ borderRight: '1px solid black', borderBottom: i === 5 ? 'none' : '1px solid black', minHeight: 16 }}>&nbsp;</div>
+                    <div style={{ borderRight: '1px solid black', borderBottom: i === 5 ? 'none' : '1px solid black', minHeight: 16 }}>&nbsp;</div>
+                    <div style={{ borderBottom: i === 5 ? 'none' : '1px solid black', minHeight: 16 }}>&nbsp;</div>
+                  </div>
+                </td>
+              </tr>
             ))}
             <tr>
-              <th colSpan={2}>Date Ordered</th><th colSpan={3}>Medications (Date Ordered / Medications)</th>
+              <th colSpan={2} style={{ border: '1px solid black' }}>Date Ordered</th>
+              <th colSpan={3} style={{ border: '1px solid black' }}>Medications (Date Ordered / Medications)</th>
             </tr>
-            {[0,1,2,3,4,5,6].map(i => (
-              <tr key={i}><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td style={{borderTop:"none"}}>&nbsp;</td></tr>
+            {Array(7).fill(0).map((_, i) => (
+              <tr key={i}>
+                <td style={{ border: '1px solid black' }}>&nbsp;</td>
+                <td style={{ border: '1px solid black' }}>&nbsp;</td>
+                <td style={{ border: '1px solid black' }}>&nbsp;</td>
+                <td style={{ border: '1px solid black' }}>&nbsp;</td>
+                <td style={{ border: '1px solid black' }}>&nbsp;</td>
+              </tr>
             ))}
           </tbody>
         </table>
