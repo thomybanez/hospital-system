@@ -155,133 +155,278 @@ export default function Kardex({ onBack }) {
         </div>
 
         {/* Status grid */}
-        <table style={{ marginTop: 8, fontSize: 10 }}>
-          <tbody>
-            <tr>
-              <td style={{ width: "20%", verticalAlign: "top", padding: 4 }}>
-                <strong>Mental Status</strong><br />
-                __________<br />
-                <br/>
-                <br/>
-                ___ Conscious<br />
-                ___ Drowsy<br />
-                ___ Stuporous<br />
-                ___ Un-conscious<br />
-                ___ Comatose<br />
+        <table
+  style={{
+    marginTop: 8,
+    fontSize: 10,
+    width: '100%',
+    tableLayout: 'fixed',
+    borderCollapse: 'collapse',
+  }}
+>
+  <tbody>
+    <tr>
+      {/* Column 1 */}
+      <td
+        style={{
+          width: '15%',
+          verticalAlign: 'top',
+          padding: 4,
+          wordBreak: 'break-word',
+        }}
+      >
+        <strong>Mental Status</strong>
+        <br />
+        __________
+        <br />
+        <br />
+        <br />
+        ___ Conscious
+        <br />
+        ___ Drowsy
+        <br />
+        ___ Stuporous
+        <br />
+        ___ Un-conscious
+        <br />
+        ___ Comatose
+        <br />
+        <br />
 
-                <strong>Level of Care</strong><br />
-                ___ I &nbsp;&nbsp; 
-                ___ II<br />
-                ___ III &nbsp;
-                ___ IV
-              </td>
+        <strong>Level of Care</strong>
+        <br />
+        ___ I &nbsp;&nbsp; ___ II
+        <br />
+        ___ III &nbsp; ___ IV
+      </td>
 
-              <td style={{ width: "20%", verticalAlign: "top", padding: 4 }}>
-                <strong>Motor Status:</strong><br />
-                ___ Normal<br />
-                ___ Slurred Speech<br />
-                ___ Hemiplegia<br />
-                ___ Paraplegia<br />
-                ___ Paresis<br />
-                Others:<br />
-                ________________<br/>
-                ________________<br/>
-                <br/>
+      {/* Column 2 */}
+      <td
+        style={{
+          width: '15%',
+          verticalAlign: 'top',
+          padding: 4,
+          wordBreak: 'break-word',
+        }}
+      >
+        <strong>Motor Status:</strong>
+        <br />
+        ___ Normal
+        <br />
+        ___ Slurred Speech
+        <br />
+        ___ Hemiplegia
+        <br />
+        ___ Paraplegia
+        <br />
+        ___ Paresis
+        <br />
+        Others:
+        <br />
+        ________________
+        <br />
+        ________________
+        <br />
+        <br />
 
+        <strong>Motor/Sensory</strong>
 
-                <strong >Motor/Sensory</strong>
-                <div style={{marginLeft:'15px', marginTop:'5px', position:'relative', width:'80px', height:'50px' }}>                  
-                  {/* vertical line */}
-                  <div
-                    style={{
-                      position:'absolute',
-                      left:'50%',
-                      top:0,
-                      bottom:0,
-                      borderLeft:'1px solid black'
-                    }}
-                  />
+        <div
+          style={{
+            marginLeft: '5px',
+            marginTop: '5px',
+            position: 'relative',
+            width: '80px',
+            height: '50px',
+          }}
+        >
+          {/* vertical line */}
+          <div
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: 0,
+              bottom: 0,
+              borderLeft: '1px solid black',
+            }}
+          />
 
-                  {/* horizontal line */}
-                  <div
-                    style={{
-                      position:'absolute',
-                      top:'50%',
-                      left:0,
-                      right:0,
-                      borderTop:'1px solid black'
-                    }}
-                  />
-                  </div>
+          {/* horizontal line */}
+          <div
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: 0,
+              right: 0,
+              borderTop: '1px solid black',
+            }}
+          />
+        </div>
+      </td>
 
+      {/* Column 3 */}
+      <td
+        style={{
+          width: '12%',
+          verticalAlign: 'top',
+          padding: 4,
+          wordBreak: 'break-word',
+        }}
+      >
+        <strong>Activities</strong>
+        <br />
+        ___ Ambulant
+        <br />
+        ___ Dangle and Sit up
+        <br />
+        ___ Bedrest w/ BRP
+        <br />
+        ___ CBR w/o BRP
+        <br />
+        <br />
+        Others:
+        <br />
+        _____________
+        <br />
+        _____________
+      </td>
 
-              </td>
+      {/* Column 4 */}
+      <td
+        style={{
+          width: '16%',
+          verticalAlign: 'top',
+          padding: 4,
+          wordBreak: 'break-word',
+        }}
+      >
+        <strong>Medical Equipment/ Devices</strong>
+        <br />
+        ( ) None
+        <br />
+        ( ) Oxygen Delivery System ______
+        <br />
+        ( ) Endotracheal/ Tracheostomy Tube
+        <br />
+        to Mechanical Ventilator /
+        <br />
+        T-Piece Settings:
+        <br />
+        Mode: ( ) AC ( ) SIMV
+        <br />
+        <br />
+        VT_____ BUR_____
+        <br />
+        FiO2____ PEEP____
+        <br />
+        cmH2O____________
+        <br />
+        PSV______________
+      </td>
 
-              <td style={{width: "15%", verticalAlign: "top", padding: 4 }}>
-                <strong>Activities</strong><br />
-                ___ Ambulant<br />
-                ___ Dangle and Sit up<br />
-                ___ Bedrest w/ BRP<br />
-                ___ CBR w/o BRP<br />
-                <br/>
-                Others:<br />
-                ________________<br/>
-                ________________<br/>
-              </td>
+      {/* Column 5 */}
+      <td
+        style={{
+          width: '14%',
+          verticalAlign: 'top',
+          padding: 4,
+          wordBreak: 'break-word',
+        }}
+      >
+        __ NGT _____
+        <br />
+        __ IJ Cath _____
+        <br />
+        __ CVP Line _____
+        <br />
+        __ CTT _____
+        <br />
+        __ IFC _____
+        <br />
+        Others:
+        <br />
+        ___________
+        <br />
+        ___________
+        <br />
+        ___________
+        <br />
+        ___________
+        <br />
+        ___________
+        <br />
+        ___________
+      </td>
 
-              <td style={{ width: "10%", verticalAlign: "top", padding: 4 }}>
-                <strong>Medical Equipment/Devices</strong><br />
-                ( ) None<br />
-                ( )Oxygen Delivery System ______<br />
-                ( ) Endotracheal/Tracheostomy Tube to Mechanical Ventilator/ T-Piece Settings:<br />
-                Mode: ( )AC ( ) SIMV<br />
-                <br/>
-                VT______ BUR______<br />
-                FiO2______ PEEP ______<br />
-                cmH2O____________<br />
-                PSV_____________
-              </td>
-              <td style={{ width: "20%", verticalAlign: "top", padding: 4 }}>
-                __ NGT _____<br />
-                __ IJ Cath _____<br />
-                __ CVP Line _____<br />
-                __ CTT _____<br />
-                __ IFC _____<br />
-                Others:<br />
-                ___________<br />
-                ___________<br />
-                ___________<br />
-                ___________<br />
-                ___________<br />
-                ___________<br />
-              </td>
-              <td style={{ width: "20%", verticalAlign: "top", padding: 4 }}>
-                <strong>Diet:</strong><br />
-                ___ NPO<br />
-                ___ DAT<br />
-                ___ Soft<br />
-                ___ Clear Liq<br />
-                ___ Gen Liq<br />
-                ___ Low Salt<br />
-                ___ Low Cholesterol<br />
-                ___ Uremic<br />
-                ___ Diabetic<br />
-                Others: ____________
-              </td>
-              <td style={{ width: "20%", verticalAlign: "top", padding: 4 }}>
-                <strong>Special Info:</strong><br />
-                Neuro VS q ____<br />
-                VS q ______<br />
-                BP ________<br />
-                CVP reading q __<br />
-                Weigh _______<br />
-                Abd girth q ____<br />
-                I &amp; O __________<br />
-                Radiation ______
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      {/* Column 6 */}
+      <td
+        style={{
+          width: '14%',
+          verticalAlign: 'top',
+          padding: 4,
+          wordBreak: 'break-word',
+        }}
+      >
+        <strong>Diet:</strong>
+        <br />
+        ___ NPO
+        <br />
+        ___ DAT
+        <br />
+        ___ Soft
+        <br />
+        ___ Clear Liq
+        <br />
+        ___ Gen Liq
+        <br />
+        ___ Low Salt
+        <br />
+        ___ Low Cholesterol
+        <br />
+        ___ Uremic
+        <br />
+        ___ Diabetic
+        <br />
+        Others: 
+        ____________
+        ____________
+      </td>
+
+      {/* Column 7 */}
+      <td
+        style={{
+          width: '14%',
+          verticalAlign: 'top',
+          padding: 4,
+          wordBreak: 'break-word',
+        }}
+      >
+        <strong>Special Info:</strong>
+        <br />
+        Neuro VS q ____
+        <br />
+        VS q ______
+        <br />
+        BP ________
+        <br />
+        CVP reading q __
+        <br />
+        Weigh _______
+        <br />
+        Abd girth q ____
+        <br />
+        I &amp; O __________
+        <br />
+        Radiation ______
+        <br />
+        Others:
+        _______________
+        _______________
+        _______________
+      </td>
+    </tr>
+  </tbody>
+</table>
 
         {/* Labs / IV Fluids */}
         <table style={{ marginTop: 6, fontSize: 9, width: '100%', borderCollapse: 'collapse' }}>
@@ -313,7 +458,8 @@ export default function Kardex({ onBack }) {
               <td style={{ border: '1px solid black' }}>&nbsp;</td>
               <td style={{ border: '1px solid black' }}>&nbsp;</td>
               <td colSpan={2} style={{ border: '1px solid black', padding: 0 }}>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', width: '100%' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', width: '100%' }}>
+                  <div style={{ borderRight: '1px solid black', borderBottom: '1px solid black', padding: '2px', textAlign: 'center' }}>Date Ordered</div>
                   <div style={{ borderRight: '1px solid black', borderBottom: '1px solid black', padding: '2px', textAlign: 'center' }}>Type</div>
                   <div style={{ borderRight: '1px solid black', borderBottom: '1px solid black', padding: '2px', textAlign: 'center' }}>Req</div>
                   <div style={{ borderRight: '1px solid black', borderBottom: '1px solid black', padding: '2px', textAlign: 'center' }}>Available</div>
@@ -323,30 +469,47 @@ export default function Kardex({ onBack }) {
             </tr>
             {Array(6).fill(0).map((_, i) => (
               <tr key={i}>
-                <td style={{ border: '1px solid black' }}>&nbsp;</td>
-                <td style={{ border: '1px solid black' }}>&nbsp;</td>
-                <td style={{ border: '1px solid black' }}>&nbsp;</td>
+                <td style={{ border: '1px solid black' }}></td>
+                <td style={{ border: '1px solid black' }}></td>
+                <td style={{ border: '1px solid black' }}></td>
                 <td colSpan={2} style={{ border: '1px solid black', padding: 0 }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', width: '100%' }}>
-                    <div style={{ borderRight: '1px solid black', borderBottom: i === 5 ? 'none' : '1px solid black', minHeight: 16 }}>&nbsp;</div>
-                    <div style={{ borderRight: '1px solid black', borderBottom: i === 5 ? 'none' : '1px solid black', minHeight: 16 }}>&nbsp;</div>
-                    <div style={{ borderRight: '1px solid black', borderBottom: i === 5 ? 'none' : '1px solid black', minHeight: 16 }}>&nbsp;</div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', width: '100%' }}>
+                    <div style={{ borderRight: '1px solid black', borderBottom: i === 5 ? 'none' : '1px solid black', minHeight: 16 }}></div>
+                    <div style={{ borderRight: '1px solid black', borderBottom: i === 5 ? 'none' : '1px solid black', minHeight: 16 }}></div>
+                    <div style={{ borderRight: '1px solid black', borderBottom: i === 5 ? 'none' : '1px solid black', minHeight: 16 }}></div>
+                    <div style={{ borderRight: '1px solid black', borderBottom: i === 5 ? 'none' : '1px solid black', minHeight: 16 }}></div>
                     <div style={{ borderBottom: i === 5 ? 'none' : '1px solid black', minHeight: 16 }}>&nbsp;</div>
                   </div>
                 </td>
               </tr>
             ))}
             <tr>
-              <th colSpan={2} style={{ border: '1px solid black' }}>Date Ordered</th>
-              <th colSpan={3} style={{ border: '1px solid black' }}>Medications (Date Ordered / Medications)</th>
+              <th colSpan={1} style={{ border: '1px solid black' }}>Date Ordered</th>
+              <th colSpan={2} style={{ border: '1px solid black' }}>Medications</th>
+              <th colSpan={1} style={{ border: '1px solid black' }}>Date Ordered</th>
+              <th colSpan={1} style={{ border: '1px solid black' }}>Medications</th>
             </tr>
-            {Array(7).fill(0).map((_, i) => (
+            {Array(14).fill(0).map((_, i) => (
               <tr key={i}>
-                <td style={{ border: '1px solid black' }}>&nbsp;</td>
-                <td style={{ border: '1px solid black' }}>&nbsp;</td>
-                <td style={{ border: '1px solid black' }}>&nbsp;</td>
-                <td style={{ border: '1px solid black' }}>&nbsp;</td>
-                <td style={{ border: '1px solid black' }}>&nbsp;</td>
+
+               {i === 7 ? (
+      <>
+        <td></td>
+        <td colSpan={2}></td>
+        <td></td>
+        <td style={{textAlign:'center', fontWeight:'bold' }}>
+          Treatments
+        </td>
+      </>
+    ) : (
+      <>
+        <td style={{ border: '1px solid black' }}>&nbsp;</td>
+        <td colSpan={2} style={{ border: '1px solid black' }}>&nbsp;</td>
+        <td style={{ border: '1px solid black' }}>&nbsp;</td>
+        <td style={{ border: '1px solid black' }}>&nbsp;</td>
+      </>
+    )}
+                
               </tr>
             ))}
           </tbody>

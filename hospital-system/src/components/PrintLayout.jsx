@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 export default function PrintLayout({ children, title = "Form" }) {
   const [paper, setPaper] = useState("a4"); // "a4" | "legal"
 
@@ -65,14 +64,14 @@ export default function PrintLayout({ children, title = "Form" }) {
           body { margin: 0; }
           @page {
             size: A4;
-            margin: 0 0;
+            margin: 0.5in;
           }
           .page-break { page-break-after: always; }
           .form-page { page-break-inside: avoid; }
         }
         .print-page {
           width: 210mm;
-          max-height: 297mm;
+          min-height: 297mm;
           margin: 0 auto;
           background: #fff;
           font-family: Arial, sans-serif;

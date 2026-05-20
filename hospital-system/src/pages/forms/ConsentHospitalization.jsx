@@ -125,7 +125,7 @@ export default function ConsentHospitalization({ onBack }) {
 
         {/* ----------------------------CONTRACT TEXT PARAGRAPH------------------------------ */}
       <div style={{textIndent:'70px', fontSize:'16px', fontFamily:'Arial'}}>
-        <p style={{marginTop:'40px', lineHeight:'1.3'}}>
+        <p style={{marginTop:'70px', lineHeight:'1.3'}}>
           I, <G value={p?.fullname} min={250}/> Authorized the department of <G value={extra.dept} min={150}/> Ward <G value={extra.ward} min={100}/>. VLMC, AFPHSC in the performance of evaluation, admission, re-admission, management and treatment. If any unforeseen condition arises in the course, I further request and authorized them to do what they seem advisable.
         </p>
 
