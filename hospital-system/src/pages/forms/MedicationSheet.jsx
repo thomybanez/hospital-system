@@ -23,7 +23,7 @@ export default function MedicationSheet({ onBack }) {
           <div className="form-title" style={{textAlign:'center'}}>MEDICATION SHEET</div>
         </div>
 
-        <table style={{ fontSize: 8, marginTop:'20px'}}>
+        <table style={{ fontSize: 8, marginTop:'10px'}}>
           <thead>
             <tr>
               <th rowSpan={1} style={{ width: "18%", alignContent:'center'}}>
@@ -55,7 +55,7 @@ export default function MedicationSheet({ onBack }) {
                   {SHIFTS.map((_, i) => <td key={i}>&nbsp;</td>)}
                 </tr>
                 <tr style={{textAlign:'center', fontWeight:'bold'}} key={`${med}-sig`}>
-                  <td style={{ fontSize: 8, height: 50 }}>Sig</td>
+                  <td style={{ fontSize: 8, height: 45 }}>Sig</td>
                   {SHIFTS.map((_, i) => <td key={i}>&nbsp;</td>)}
                 </tr>
                 <tr style={{textAlign:'center', fontWeight:'bold'}}  key={`${med}-rem`}>
@@ -74,7 +74,7 @@ export default function MedicationSheet({ onBack }) {
             </tr>
             {[0,1,2].map(i => (
               <tr key={i}>
-                <td colSpan={2} style={{ height: 18 }}>&nbsp;</td>
+                <td colSpan={2} style={{ height: 25 }}>&nbsp;</td>
                 <td colSpan={6}>&nbsp;</td>
                 <td colSpan={2}>&nbsp;</td>
                 <td colSpan={6}>&nbsp;</td>
@@ -100,12 +100,19 @@ export default function MedicationSheet({ onBack }) {
           </div>
         </div>
         
-        <div className="row">
-          <span className="label">RANK/NAME: </span>
-          <span className="field-line" style={{ minWidth: 200 }}>{p ? `${p.rank} ${p.fullname}` : "\u00A0"}</span>
-          <span className="label">REG#: </span>
-          <span className="field-line" style={{ minWidth: 100 }}>{p?.regno || "\u00A0"}</span>
-          <span className="label">WARD: 3A</span>
+        <div className="row" style={{display:'flex', flexDirection:'row', fontSize:'12px', fontWeight:'bold', marginTop:'5px'}}>
+          
+          <div style={{flex:'2', display:'flex', flexDirection:'row'}}>
+            <span>RANK/NAME: </span>
+            <span className="field-line" style={{minWidth: 50 }}>{p ? `${p.rank} ${p.fullname}` : "\u00A0"}</span>
+          </div>
+          
+          <div style={{flex:'1', display:'flex', flexDirection:'row'}}>
+            <span>REG#: </span>
+            <span className="field-line" style={{ minWidth: 50 }}>{p?.regno || "\u00A0"}</span>
+          </div>
+                   
+          <span style={{flex:'0.5', display:'flex', flexDirection:'row'}}>WARD: 3A</span>
         </div>
       </PrintLayout>
     </div>
