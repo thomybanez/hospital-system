@@ -27,75 +27,120 @@ export default function NursingHistory({ onBack }) {
         {/* ── PAGE 1 (FRONT) — Sections I–VII ── */}
         <div className="form-page">
           <div className="form-header">
-            <div className="org">ARMED FORCES OF THE PHILIPPINES HEALTH SERVICE COMMAND</div>
-            <div className="org" style={{ fontWeight:"bold" }}>VICTORIANO LUNA MEDICAL CENTER</div>
-            <div className="org">Camp Colonel Victoriano K Luna, V Luna Avenue, Quezon City</div>
-            <div className="form-title">NURSING HISTORY GUIDE I</div>
+            <div>ARMED FORCES OF THE PHILIPPINES HEALTH SERVICE COMMAND</div>
+            <div>VICTORIANO LUNA MEDICAL CENTER</div>
+            <div>Camp Colonel Victoriano K Luna, V Luna Avenue, Quezon City</div>
+            <div>NURSING HISTORY GUIDE I</div>
           </div>
 
-          <p style={{ fontSize:9, margin:"4px 0 8px" }}>INSTRUCTION: Enter information/finding as elicited from patient. Indicate with a (✓) mark on the tick boxes if it applies. Write "NA" if item does not apply.</p>
+          <p>INSTRUCTION: Enter information/finding as elicited from patient. Indicate with a (✓) mark on the tick boxes if it applies. Write "NA" if item does not apply.</p>
 
-          <div className="row">
-            <span className="label">Date:</span>
-            <span className="field-line" style={{ minWidth:100 }}>{extra.date || "\u00A0"}</span>
-            <span className="label">Admission Time:</span>
-            <span className="field-line" style={{ minWidth:80 }}>{extra.admTime || "\u00A0"}</span>
-            <span className="label">Accompanied by:</span>
-            <span className="field-line" style={{ minWidth:140 }}>{extra.accompaniedBy || "\u00A0"}</span>
-            <span className="label">h</span>
+          <div className="flex-row">
+            <div className="flex-row" style={{flex:'1'}}>
+              <span>Date:</span>
+              <span className="field-line" style={{ minWidth:50 }}>{extra.date || "\u00A0"}</span>
+            </div>
+            
+            <div className="flex-row" style={{flex:'1'}}>
+              <span>Admission&nbsp;Time:</span>
+              <span className="field-line" style={{ minWidth:50 }}>{extra.admTime || "\u00A0"}</span>
+            </div>
+            
+            <div className="flex-row" style={{flex:'1'}}>
+              <span>Accompanied&nbsp;by:</span>
+              <span className="field-line" style={{ minWidth:50 }}>{extra.admTime || "\u00A0"}</span> 
+            </div>
+                   
           </div>
 
           <table style={{ marginTop:6, fontSize:9 }}>
             {/* Section I */}
             <tbody>
-              <tr><td colSpan={2} style={{ fontWeight:"bold", background:"#f0f0f0" }}>I. PERSONAL INFORMATION</td></tr>
+              <tr>
+                <td colSpan={2} style={{ fontWeight:"bold", background:"#f0f0f0" }}>I. PERSONAL INFORMATION</td></tr>
               <tr>
                 <td colSpan={2}>
-                  <div className="row">
-                    <span className="label">Rank/Name:</span>
-                    <span className="field-line" style={{ minWidth:180 }}>{p ? `${p.rank} ${p.fullname}` : "\u00A0"}</span>
-                    <span className="label">AFPSN:</span>
-                    <span className="field-line" style={{ minWidth:90 }}>{p?.afpsn || "\u00A0"}</span>
-                    <span className="label">BOS:</span>
-                    <span className="field-line" style={{ minWidth:80 }}>{p?.bos || "\u00A0"}</span>
+                  <div className="flex-row">
+                    <div className="flex-row" style={{marginLeft:'0px'}}>
+                      <span>Rank/Name:</span>
+                      <span className="field-line" style={{ minWidth:180 }}>{p ? `${p.rank} ${p.fullname}` : "\u00A0"}</span>
+                    </div>
+                    <div className="flex-row" style={{flex:'1'}}>
+                      <span>AFPSN:</span>
+                      <span className="field-line" style={{ minWidth:90 }}>{p?.afpsn || "\u00A0"}</span>
+                    </div>
+                    <div className="flex-row" style={{flex:'1'}}>
+                      <span>BOS:</span>
+                      <span className="field-line" style={{ minWidth:80 }}>{p?.bos || "\u00A0"}</span>
+                    </div>
                   </div>
-                  <div className="row">
-                    <span className="label">Age:</span>
-                    <span className="field-line" style={{ minWidth:40 }}>{p?.age || "\u00A0"}</span>
-                    <span className="label">Sex:</span>
-                    <span className="field-line" style={{ minWidth:60 }}>{p?.sex || "\u00A0"}</span>
-                    <span className="label">Religion:</span>
-                    <span className="field-line" style={{ minWidth:90 }}>{p?.religion || "\u00A0"}</span>
-                    <span className="label">Civil Status:</span>
-                    <span className="field-line" style={{ minWidth:70 }}>&nbsp;</span>
-                    <span className="label">Unit:</span>
-                    <span className="field-line" style={{ minWidth:80 }}>{p?.unit || "\u00A0"}</span>
+
+                  <div className="flex-row">
+                    <div className="flex-row" style={{flex:1, marginLeft:'0px'}}>
+                      <span>Age:</span>
+                      <span className="field-line" style={{ minWidth:40 }}>{p?.age || "\u00A0"}</span>
+                    </div>
+
+                    <div className="flex-row" style={{flex:1}}>
+                      <span>Sex:</span>
+                      <span className="field-line" style={{ minWidth:60 }}>{p?.sex || "\u00A0"}</span>
+                    </div>
+
+                    <div className="flex-row" style={{flex:1}}>
+                      <span>Religion:</span>
+                      <span className="field-line" style={{ minWidth:90 }}>{p?.religion || "\u00A0"}</span>
+                    </div>                    
+                    
+                    <div className="flex-row" style={{flex:1}}>
+                      <span>Civil&nbsp;Status:</span>
+                      <span className="field-line" style={{ minWidth:70 }}>&nbsp;</span>
+                    </div>
+
+                    <div className="flex-row" style={{flex:1}}>
+                      <span>Unit:</span>
+                      <span className="field-line" style={{ minWidth:80 }}>{p?.unit || "\u00A0"}</span>
+                    </div>                    
                   </div>
-                  <div className="row">
-                    <span className="label">Home Address:</span>
-                    <span className="field-line xl">{p?.address || "\u00A0"}</span>
+
+                  <div className="flex-row">
+                    <span>Home&nbsp;Address:</span>
+                    <span className="field-line xl" style={{marginRight:'12px'}}>{p?.address || "\u00A0"}</span>
                   </div>
-                  <div className="row">
-                    <span className="label">Blood Type:</span>
-                    <span className="field-line" style={{ minWidth:60 }}>&nbsp;</span>
-                    <span className="label">Educational Attainment:</span>
-                    <span className="field-line" style={{ minWidth:120 }}>&nbsp;</span>
+
+                  <div className="flex-row">
+                    <div className="flex-row" style={{flex:'1', marginLeft:'0'}}>
+                      <span>Blood&nbsp;Type:</span>
+                      <span className="field-line" style={{ minWidth:60 }}>&nbsp;</span>
+                    </div>
+                    
+                    <div className="flex-row" style={{flex:'4'}}>
+                      <span>Educational&nbsp;Attainment:</span>
+                      <span className="field-line" style={{ minWidth:120 }}>&nbsp;</span>
+                    </div>
                   </div>
-                  <div className="row">
-                    <span className="label">Occupation:</span>
-                    <span className="field-line" style={{ minWidth:140 }}>&nbsp;</span>
-                    <span className="label">Language/Dialect Spoken:</span>
-                    <span className="field-line" style={{ minWidth:120 }}>&nbsp;</span>
+
+                  <div className="flex-row">
+                    <div className="flex-row" style={{flex:'1', marginLeft:'0'}}>
+                      <span>Occupation:</span>
+                      <span className="field-line" style={{ minWidth:140 }}>&nbsp;</span>
+                    </div>
+
+                    <div className="flex-row" style={{flex:'1'}}>
+                      <span>Language/Dialect&nbsp;Spoken:</span>
+                      <span className="field-line" style={{ minWidth:120 }}>&nbsp;</span>
+                    </div>
                   </div>
-                  <div className="row">
-                    <span className="label">Next of Kin:</span>
-                    <span className="field-line xl">&nbsp;</span>
+
+                  <div className="flex-row">
+                    <span>Next&nbsp;of&nbsp;Kin:</span>
+                    <span className="field-line" style={{marginRight:'12px'}}>&nbsp;</span>
                   </div>
+                  <br/>
                 </td>
               </tr>
 
               {/* Section II */}
-              <tr><td colSpan={2} style={{ fontWeight:"bold", background:"#f0f0f0" }}>II. VITAL INFORMATION</td></tr>
+              <tr><td colSpan={2} style={{ fontWeight:"bold", background:"#f0f0f0"}}>II. VITAL INFORMATION</td></tr>
               <tr>
                 <td colSpan={2}>
                   <div style={{ marginBottom:4 }}><strong>A. Manner of Admission:</strong></div>

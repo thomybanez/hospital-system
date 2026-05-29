@@ -62,9 +62,22 @@ export default function Kardex({ onBack }) {
             <F value={p?.regno} />
           </div>
           
-          <div style={{flex:'1', display:'flex'}}>
-            DOB:
-            <F value={p?.dob} />
+          <div style={{ flex: '1', display: 'flex' }}>
+          DOB:
+          <F value={
+            p?.dob 
+              ? (() => {
+                  const [year, month, day] = p.dob.split('-');
+                  const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+                  
+                  const formattedMonth = months[parseInt(month, 10) - 1];
+                  const formattedYear = year.slice(-2); // Gets the last 2 digits (e.g., "93")
+                  const formattedDay = parseInt(day, 10); // Removes leading zero if any (e.g., "05" becomes "5")
+
+                  return `${formattedDay} ${formattedMonth} ${formattedYear}`;
+                })()
+              : ""
+          } />
           </div>
 
           <div style={{flex:'1', display:'flex'}}>
@@ -72,13 +85,21 @@ export default function Kardex({ onBack }) {
             <F value={p?.religion}/>
           </div>
 
-          <div style={{flex:'1' , display:'flex'}}>
+          <div style={{ flex: '1', display: 'flex' }}>
             Height:
             <F value={
-              p?.height != null &&
-              p?.height != undefined &&
-              p?.height != ""
-                ? `${p.weight} ft`
+              p?.height != null && p?.height !== ""
+                ? (() => {
+                    const totalInches = p.height / 2.54;
+                    const feet = Math.floor(totalInches / 12);
+                    const inches = Math.round(totalInches % 12);
+                    
+                    // Handles edge case where rounding inches up triggers an extra foot (e.g., 11.6in -> 12in -> 1 more foot)
+                    const adjustedFeet = inches === 12 ? feet + 1 : feet;
+                    const adjustedInches = inches === 12 ? 0 : inches;
+
+                    return `${p.height}cm (${adjustedFeet}ft ${adjustedInches}in)`;
+                  })()
                 : ""
             }/>
           </div>
@@ -96,14 +117,14 @@ export default function Kardex({ onBack }) {
           </div>
         </div>
 
-        <div style={{display:'flex', fontSize:'12px', alignItems:"center", textAlign:"center", lineHeight:'1.5'}}>
+        <div style={{display:'flex', fontSize:'12px', alignItems:"center", textAlign:"center", lineHeight:'1.3'}}>
 
           <div style={{flex:'2', display:'flex', flexDirection:'row'}}>
             Unit&nbsp;Assignment:
             <F value={p?.unit}/>
           </div>
           
-          <div style={{flex:'2', display:'flex'}}>
+          <div style={{flex:'2', display:'flex', lineHeight:'1.3'}}>
             Date/Time&nbsp;Admitted:
             <F value={p?.admitted}/>
           </div>
@@ -114,7 +135,7 @@ export default function Kardex({ onBack }) {
           </div>         
         </div>
 
-        <div style={{display:'flex', fontSize:'12px', lineHeight:'1.3', textAlign:'justify'}}>
+        <div style={{display:'flex', fontSize:'12px', lineHeight:'1.3', textAlign:'justify', lineHeight:'1.3'}}>
           Impression/Diagnosis:
           {p?.diagnosis ? (
             <>

@@ -33,21 +33,19 @@ export default function PrintLayout({ children, title = "Form" }) {
           padding: 0;
           box-sizing: border-box; /* This is the most important line */
         }
+      
+      .flex-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 0 10px;
+      }
 
 
         /* Class Underline */
         .underline  {
             text-decoration: underline;
         }
-
-
-
-
-
-
-
-
-
 
         .red { border: 2px solid red;}
         .blue { border: 2px solid blue;}
