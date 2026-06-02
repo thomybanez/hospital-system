@@ -64,14 +64,20 @@ export default function MedicationSheet({ onBack }) {
                 </tr>
               </>
             ))}
+            
+          </tbody>
+        </table>
+
+        <table style={{marginTop: '10px'}}>
+          <tbody>
             <tr>
-              <td colSpan={2} style={{ fontWeight: "bold", fontSize: 9 }}>Initial Sig</td>
-              <td colSpan={6} style={{ fontSize: 9 }}>Printed name and Lic Nr</td>
-              <td colSpan={2} style={{ fontWeight: "bold", fontSize: 9 }}>Initial Sig</td>
-              <td colSpan={6} style={{ fontSize: 9 }}>Printed name and Lic Nr</td>
-              <td colSpan={2} style={{ fontWeight: "bold", fontSize: 9 }}>Initial Sig</td>
-              <td colSpan={2} style={{ fontSize: 9 }}>Printed name and Lic Nr</td>
-            </tr>
+            <td colSpan={2} style={{ fontWeight: "bold", fontSize: 9 }}>Initial Sig</td>
+            <td colSpan={6} style={{ fontSize: 9 }}>Printed name and Lic Nr</td>
+            <td colSpan={2} style={{ fontWeight: "bold", fontSize: 9 }}>Initial Sig</td>
+            <td colSpan={6} style={{ fontSize: 9 }}>Printed name and Lic Nr</td>
+            <td colSpan={2} style={{ fontWeight: "bold", fontSize: 9 }}>Initial Sig</td>
+            <td colSpan={6} style={{ fontSize: 9 }}>Printed name and Lic Nr</td>
+          </tr>
             {[0,1,2].map(i => (
               <tr key={i}>
                 <td colSpan={2} style={{ height: 25 }}>&nbsp;</td>
@@ -79,7 +85,7 @@ export default function MedicationSheet({ onBack }) {
                 <td colSpan={2}>&nbsp;</td>
                 <td colSpan={6}>&nbsp;</td>
                 <td colSpan={2}>&nbsp;</td>
-                <td colSpan={2}>&nbsp;</td>
+                <td colSpan={6}>&nbsp;</td>
               </tr>
             ))}
           </tbody>

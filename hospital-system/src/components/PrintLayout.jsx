@@ -41,6 +41,12 @@ export default function PrintLayout({ children, title = "Form" }) {
         margin: 0 10px;
       }
 
+      .flex-col{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
 
         /* Class Underline */
         .underline  {

@@ -93,7 +93,9 @@ export default function NursingHistory({ onBack }) {
                     
                     <div className="flex-row" style={{flex:1}}>
                       <span>Civil&nbsp;Status:</span>
-                      <span className="field-line" style={{ minWidth:70 }}>&nbsp;</span>
+                      <span className="field-line" style={{ minWidth:70 }}>
+                        {p?.civilstatus || "\u00A0"}
+                      </span>
                     </div>
 
                     <div className="flex-row" style={{flex:1}}>
@@ -140,20 +142,55 @@ export default function NursingHistory({ onBack }) {
               </tr>
 
               {/* Section II */}
-              <tr><td colSpan={2} style={{ fontWeight:"bold", background:"#f0f0f0"}}>II. VITAL INFORMATION</td></tr>
               <tr>
-                <td colSpan={2}>
-                  <div style={{ marginBottom:4 }}><strong>A. Manner of Admission:</strong></div>
-                  <div style={{ display:"flex", gap:20, marginLeft:16, marginBottom:6 }}>
-                    <CB label="Ambulatory" /><CB label="Per Stretcher" /><CB label="Per Wheelchair" /><CB label="Others ________" />
+                <td colSpan={2} style={{ fontWeight:"bold", background:"#f0f0f0"}}>II. VITAL INFORMATION</td>
+              </tr>
+
+              <tr>
+                <td style={{lineHeight:'1.8'}} colSpan={2}>
+                  <div className="flex-row">
+                    <span style={{fontWeight:'bold'}}>
+                      A. Manner of Admission:
+                    </span>
+                    <div className="flex-row" style={{width:'30%', justifyContent:'space-between'}}>
+                      <div className="flex-col" style={{alignItems:'flex-start'}}>
+                        <CB label="Ambulatory"/>
+                        <CB label="Per Stretcher" />
+                      </div>
+                      <div className="flex-col" style={{alignItems:'flex-start'}}>
+                        <CB label="Per Wheelchair" />
+                        <CB label="Others ________" />
+                      </div>
+                    </div>
                   </div>
-                  <div className="row"><span className="label">B. Type of Admission:</span><span className="field-line" style={{ minWidth:200 }}>&nbsp;</span></div>
-                  <div className="row"><span className="label">C. Reason of admission*:</span><span className="field-line xl">{p?.diagnosis || "\u00A0"}</span></div>
-                  <div style={{ fontSize:9, marginTop:4 }}>
-                    *Source of information: <CB label="patient" /><CB label="significant other" />
-                    <span className="label">With Allergies, please specify: </span>
-                    <span className="field-line" style={{ minWidth:120 }}>{p?.allergies || "\u00A0"}</span>
+                  
+                  <div className="flex-row">
+                    <span style={{fontWeight:'bold', whiteSpace:'nowrap'}}>B. Type of Admission:</span>
+                    <span className="field-line" style={{ minWidth:100, width:'100%'}}>&nbsp;</span>
                   </div>
+
+                  <div className="flex-row">
+                    <span style={{fontWeight:'bold', whiteSpace:'nowrap'}}>C. Reason of admission*:</span>
+                    <span className="field-line" style={{minWidth:100, width:'100%'}}>&nbsp;</span>
+                  </div>
+
+                  <div className="flex-row">
+                    <div className="flex-row" style={{flex:'1', marginLeft:'0px'}}>
+                      <span style={{fontWeight:'bold'}}>*Source of information: </span>
+                      <div className="flex-row">
+                        <CB label="patient" />
+                        <CB label="significant other" />
+                      </div>                      
+                    </div>
+
+                    <div className="flex-row" style={{flex:'1', width:'100%'}}>
+                      <span style={{whiteSpace:'nowrap'}}>With Allergies, please specify:</span>
+                      <span className="field-line" style={{minWidth:'10px'}}>
+                        {p?.allergies || "\u00A0"}
+                      </span>
+                    </div>
+                  </div>
+
                 </td>
               </tr>
 
@@ -161,22 +198,45 @@ export default function NursingHistory({ onBack }) {
               <tr><td colSpan={2} style={{ fontWeight:"bold", background:"#f0f0f0" }}>III. ALLERGIES</td></tr>
               <tr>
                 <td colSpan={2}>
-                  <CB label="No Known Allergy" />
-                  <CB label="With Allergies, please specify:" />
-                  <span className="field-line" style={{ minWidth:180 }}>{p?.allergies || "\u00A0"}</span>
+                  <div className="flex-row" style={{whiteSpace:"nowrap"}}>
+                    <CB label="No Known Allergy" />
+                    <div className="flex-row">
+                      <CB label="With Allergies, please specify:" />
+                      <span className="field-line" style={{ minWidth:200 }}>{p?.allergies || "\u00A0"}</span>
+                    </div>                    
+                  </div>
                 </td>
               </tr>
 
               {/* Section IV */}
-              <tr><td colSpan={2} style={{ fontWeight:"bold", background:"#f0f0f0" }}>IV. MEDICAL AND SURGICAL HISTORY</td></tr>
               <tr>
-                <td style={{ width:"50%", verticalAlign:"top", padding:4 }}>
-                  <div><strong>Pertinent Medical History:</strong></div>
-                  <div className="row">Heart Disease, Specify: <span className="field-line" style={{ minWidth:100 }}>&nbsp;</span></div>
-                  <div className="row">Infectious Disease, Specify: <span className="field-line" style={{ minWidth:100 }}>&nbsp;</span></div>
-                  <div className="row">Injuries, Specify: <span className="field-line" style={{ minWidth:100 }}>&nbsp;</span></div>
-                  <div className="row">Lung Disease, Specify: <span className="field-line" style={{ minWidth:100 }}>&nbsp;</span></div>
-                  <div style={{ marginTop:6 }}><strong>Pertinent Family Medical History:</strong></div>
+                <td colSpan={2} style={{ fontWeight:"bold", background:"#f0f0f0" }}>
+                  IV. MEDICAL AND SURGICAL HISTORY
+                </td>
+              </tr>
+
+              <tr>
+                <td className="red" style={{ width:"50%", verticalAlign:"top", padding:4, whiteSpace:"nowrap"}}>
+                  <span style={{fontWeight:"bold"}}>
+                    Pertinent Medical History:
+                  </span>
+                  <div className="flex-row">
+                    Heart Disease, Specify: 
+                    <span className="field-line" style={{ minWidth:100 }}>&nbsp;</span>
+                  </div>
+                  <div className="flex-row">
+                    Infectious Disease, Specify: 
+                    <span className="field-line" style={{ minWidth:100 }}>&nbsp;</span>
+                  </div>
+                  <div className="flex-row">
+                    Injuries, Specify: 
+                    <span className="field-line" style={{ minWidth:100 }}>&nbsp;</span>
+                  </div>
+                  <div className="flex-row">
+                    Lung Disease, Specify:
+                    <span className="field-line" style={{ minWidth:100 }}>&nbsp;</span>
+                  </div>
+                  <div style={{ marginTop:15 }}><strong>Pertinent Family Medical History:</strong></div>
                   <div style={{ display:"flex", gap:8, flexWrap:"wrap", marginTop:3 }}>
                     <CB label="Diabetes" /><CB label="TB" /><CB label="Cancer" /><CB label="Asthma" /><CB label="Hypertension" />
                   </div>
